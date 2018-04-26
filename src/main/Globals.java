@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
 public class Globals {
     
     // Adaptador de pantalla 1280 x 720 a Full Screen

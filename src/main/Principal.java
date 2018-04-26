@@ -3,7 +3,6 @@ package main;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JLabel;
 
 public class Principal extends javax.swing.JPanel {
 
@@ -22,7 +21,7 @@ public class Principal extends javax.swing.JPanel {
                 Globals.setBackground(Globals.fullScreen, "src/resources/background2.jpg");
                 Globals.getPrincipal().setVisible(false);
                 Globals.Main.repaint();
-                Globals.getBackground().setVisible(false);
+                Globals.getBackground().setVisible(true);
                 Globals.Main.add(new License());
                 
             }
