@@ -2,6 +2,7 @@ package main;
 
 import ch.aplu.xboxcontroller.XboxController;
 import ch.aplu.xboxcontroller.XboxControllerAdapter;
+import javax.swing.JOptionPane;
 
 public class GamePadExample extends javax.swing.JFrame {
 
@@ -13,15 +14,22 @@ public class GamePadExample extends javax.swing.JFrame {
         initComponents();
         
         xc = new XboxController();
-        xc.setLeftThumbDeadZone(0);
-        if (!xc.isConnected()){
-            xc.release();
-            return;
-        }
-    
+        //xc.setDebug(true);
+        xc.setLeftThumbDeadZone(0.2);
         xc.addXboxControllerListener(new XboxControllerAdapter(){
             
-            public void dpad(int direction, boolean pressed){
+            @Override public void isConnected(boolean connected) {
+                
+                if (!connected){
+                    
+                    JOptionPane.showMessageDialog(null, "El mando se ha desconectado.");
+                    //xc.release(); // Libera xc
+                }
+            }
+            
+            // Pad Cuadriculado
+            
+            @Override public void dpad(int direction, boolean pressed){
                         
                     switch(direction){
                         case 0: y -= 30; break;
@@ -37,8 +45,10 @@ public class GamePadExample extends javax.swing.JFrame {
                 sprite.setLocation(x, y);
             }
    
+            // Thumb Izquierdo
+            
             @Override public void leftThumbDirection(double direction) {
-                
+
                 if (direction > 315 && direction < 360|| direction > 0 && direction < 45) {
                     y -= 30;
                 } else if (direction > 45 && direction < 135) {
@@ -52,8 +62,41 @@ public class GamePadExample extends javax.swing.JFrame {
                 sprite.setLocation(x, y);
             }
 
+            @Override public void buttonA(boolean bln) {
+                System.out.println("Boton A presionado");
+            }
+
+            @Override public void buttonB(boolean bln) {
+                System.out.println("Boton B presionado");
+            }
+
+            @Override public void buttonX(boolean bln) {
+                System.out.println("Boton X presionado");
+            }
+
+            @Override public void buttonY(boolean bln) {
+                System.out.println("Boton Y presionado");
+            }
+
+            @Override public void back(boolean bln) {
+                System.out.println("Boton Back presionado");
+            }
+
+            @Override public void start(boolean bln) {
+                System.out.println("Boton Start presionado");
+            }
+
+            @Override public void leftShoulder(boolean bln) {
+                System.out.println("Boton LT presionado");
+            }
+
+            @Override public void rightShoulder(boolean bln) {
+                System.out.println("Boton RT presionado");
+            }
+
         });
     }
+ 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -89,10 +132,11 @@ public class GamePadExample extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(() -> {
             new GamePadExample().setVisible(true);
+            
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel sprite;
+    private static javax.swing.JLabel sprite;
     // End of variables declaration//GEN-END:variables
 }

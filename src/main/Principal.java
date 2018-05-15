@@ -8,10 +8,23 @@ public class Principal extends javax.swing.JPanel {
 
     public Principal() {
         initComponents();
-        //fegalbao_
+        
         Globals.setPrincipal(this);
         this.setBounds(Globals.location);
         this.setBackground(new Color(0, 0, 0, 0));
+        
+        // Abre la ventana de selección de personaje
+
+        lbNewGame.addMouseListener(new MouseAdapter() {
+            @Override public void mouseClicked(MouseEvent e) { 
+               
+                Globals.getPrincipal().setVisible(false);
+                Globals.Main.repaint();
+                Globals.getBackground().setVisible(false);
+                Globals.Main.add(new newGame());
+                
+            }
+        });
         
         // Abre el JPanel "License"
 
@@ -48,6 +61,7 @@ public class Principal extends javax.swing.JPanel {
         lbLoadGame = new javax.swing.JLabel();
         lbNewGame = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(0, 0, 0));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));
 

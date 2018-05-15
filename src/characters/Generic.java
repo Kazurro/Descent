@@ -1,10 +1,8 @@
 package characters;
 
-import javax.swing.ImageIcon;
-
 public class Generic {
-  
-    private final ImageIcon imagen;
+
+    private final Sprite sprite;
     private final String nombre;
     private int vida;
     private int daño;
@@ -14,9 +12,9 @@ public class Generic {
     
     // Constructor
 
-    public Generic(String nombre, ImageIcon imagen, int vida, int daño, int defensa, int movimiento, int rango) {
+    public Generic(String nombre, Sprite sprite, int vida, int daño, int defensa, int movimiento, int rango) {
         this.nombre = nombre;
-        this.imagen = imagen;
+        this.sprite = sprite;
         this.vida = vida;
         this.daño = daño;
         this.defensa = defensa;
@@ -30,8 +28,8 @@ public class Generic {
         return nombre;
     }
 
-    public ImageIcon getImagen() {
-        return imagen;
+    public Sprite getSprite() {
+        return sprite;
     }
     
     public int getVida() {

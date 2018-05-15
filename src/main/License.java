@@ -36,7 +36,7 @@ public class License extends javax.swing.JPanel {
         lbExit = new javax.swing.JLabel();
         lbCompanyLogo = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 0, 0));
         setToolTipText("");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setName("3"); // NOI18N

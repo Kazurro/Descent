@@ -47,6 +47,9 @@
           <Image iconType="3" name="/resources/sprites/heroes/guerrero.gif"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

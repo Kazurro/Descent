@@ -16,9 +16,10 @@ public class Globals {
     protected static Rectangle location = new Rectangle(0, 0, fullScreen.width, fullScreen.height);
     
     // Ventanas de diseño del MainScreen
-    protected static JFrame Main;
+    public static JFrame Main;
     private static JLabel Background;
     private static Principal Principal;
+    private static newGame Game;
     private static License Licencia;
 
     public static void setBackground(Dimension size, String rutaImagen) {
@@ -54,4 +55,11 @@ public class Globals {
         Licencia = licencia;
     }
     
+    public static newGame getGame() {
+        return Game;
+    }
+    public static void setGame(newGame newGame){
+        
+        Game = newGame;
+    }
 }
