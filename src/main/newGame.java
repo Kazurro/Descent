@@ -55,8 +55,6 @@ public class newGame extends javax.swing.JPanel {
         lbHeroe1 = new javax.swing.JLabel();
         cbHeroe1 = new javax.swing.JComboBox<>();
         prueba = new javax.swing.JLabel();
-        lbHeroe2 = new javax.swing.JLabel();
-        cbHeroe2 = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setLayout(null);
@@ -76,18 +74,6 @@ public class newGame extends javax.swing.JPanel {
         prueba.setMinimumSize(new java.awt.Dimension(48, 48));
         add(prueba);
         prueba.setBounds(160, 410, 48, 48);
-
-        lbHeroe2.setMinimumSize(new java.awt.Dimension(144, 144));
-        add(lbHeroe2);
-        lbHeroe2.setBounds(310, 60, 190, 144);
-
-        cbHeroe2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbHeroe2ActionPerformed(evt);
-            }
-        });
-        add(cbHeroe2);
-        cbHeroe2.setBounds(310, 220, 190, 33);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe1ActionPerformed
@@ -97,15 +83,9 @@ public class newGame extends javax.swing.JPanel {
         heroe1 = new Gamepad(this.prueba, heroes.get(cbHeroe1.getSelectedIndex()).getSprite());
     }//GEN-LAST:event_cbHeroe1ActionPerformed
 
-    private void cbHeroe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbHeroe2ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbHeroe1;
-    private javax.swing.JComboBox<String> cbHeroe2;
     private javax.swing.JLabel lbHeroe1;
-    private javax.swing.JLabel lbHeroe2;
     private static javax.swing.JLabel prueba;
     // End of variables declaration//GEN-END:variables
 }
