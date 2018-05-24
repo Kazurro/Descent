@@ -22,21 +22,6 @@ public class Principal extends javax.swing.JPanel {
                 Globals.Main.repaint();
                 Globals.getBackground().setVisible(false);
                 Globals.Main.add(new newGame());
-                
-            }
-        });
-        
-        // Abre el JPanel "License"
-
-        lbLicense.addMouseListener(new MouseAdapter() {
-            @Override public void mouseClicked(MouseEvent e) { 
-               
-                Globals.setBackground(Globals.fullScreen, "src/resources/background2.jpg");
-                Globals.getPrincipal().setVisible(false);
-                Globals.Main.repaint();
-                Globals.getBackground().setVisible(true);
-                Globals.Main.add(new License());
-                
             }
         });
         
@@ -65,7 +50,7 @@ public class Principal extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        lbBrand.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/brand.png"))); // NOI18N
+        lbBrand.setIcon(new javax.swing.ImageIcon("C:\\Users\\Kazuto\\Documents\\NetBeansProjects\\Descent\\resources\\brand.png")); // NOI18N
 
         lbExit.setBackground(new java.awt.Color(255, 255, 255));
         lbExit.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
@@ -77,7 +62,7 @@ public class Principal extends javax.swing.JPanel {
         lbLicense.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
         lbLicense.setForeground(new java.awt.Color(255, 255, 255));
         lbLicense.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbLicense.setText("Licencia");
+        lbLicense.setText("Texto de Prueba");
 
         lbOptions.setBackground(new java.awt.Color(255, 255, 255));
         lbOptions.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
@@ -105,14 +90,14 @@ public class Principal extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lbLoadGame)
-                            .addComponent(lbExit)
-                            .addComponent(lbLicense, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbNewGame, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lbNewGame, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbLicense, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 707, Short.MAX_VALUE)
                         .addComponent(lbBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(73, 73, 73))
         );

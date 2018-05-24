@@ -3,15 +3,17 @@ package main;
 import static characters.Heroe.heroes;
 import characters.Heroe;
 import characters.Sprite;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-import util.Keyboard;
+import util.*;
 
 public class newGame extends javax.swing.JPanel {
     
     private Keyboard keyboard;
+    private Gamepad heroe1;
     
     public newGame() {
         initComponents();
@@ -19,15 +21,19 @@ public class newGame extends javax.swing.JPanel {
         this.setBounds(Globals.location);
         
         // Asesino
-        new Heroe("Asesino", new Sprite("src/resources/sprites/heroes/asesino/"), 12, 5, 2, 4, 1);
+        new Heroe("Asesino", new Sprite("resources/sprites/heroes/asesino/"), 12, 5, 2, 4, 1);
         
         // Guerrero
-        //new Heroe("Cleriga", new ImageIcon("src/resources/sprites/heroes/cleriga.gif"), 16, 2, 2,3, 2);
-        new Heroe("Guerrero", new Sprite("src/resources/sprites/heroes/guerrero/"), 18, 4, 2,3, 1);
-        //new Heroe("Luchador", new ImageIcon("src/resources/sprites/heroes/luchador.gif"), 16, 5, 2,3, 2);
-        //new Heroe("Mago", new ImageIcon("src/resources/sprites/heroes/mago.gif"), 12, 4, 2,3, 3);
-        //new Heroe("Paladin", new ImageIcon("src/resources/sprites/heroes/paladin.gif"), 18, 4, 2, 3, 1);
+        //new Heroe("Cleriga", new ImageIcon("resources/sprites/heroes/cleriga.gif"), 16, 2, 2,3, 2);
+        new Heroe("Guerrero", new Sprite("resources/sprites/heroes/guerrero/"), 18, 4, 2,3, 1);
+        //new Heroe("Luchador", new ImageIcon("resources/sprites/heroes/luchador.gif"), 16, 5, 2,3, 2);
+        //new Heroe("Mago", new ImageIcon("resources/sprites/heroes/mago.gif"), 12, 4, 2,3, 3);
+        //new Heroe("Paladin", new ImageIcon("resources/sprites/heroes/paladin.gif"), 18, 4, 2, 3, 1);
         setupComboBox(cbHeroe1);
+        
+        
+        this.setBackground(new Color(0, 0, 0, 0));
+        Globals.getBackground().setVisible(true);
     }
 
     public static void setupComboBox(JComboBox seleccion){
@@ -48,57 +54,57 @@ public class newGame extends javax.swing.JPanel {
         lbHeroe1 = new javax.swing.JLabel();
         cbHeroe1 = new javax.swing.JComboBox<>();
         prueba = new javax.swing.JLabel();
+        lbHeroe2 = new javax.swing.JLabel();
+        cbHeroe2 = new javax.swing.JComboBox<>();
 
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setLayout(null);
 
         lbHeroe1.setMinimumSize(new java.awt.Dimension(144, 144));
+        add(lbHeroe1);
+        lbHeroe1.setBounds(76, 61, 190, 144);
 
         cbHeroe1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbHeroe1ActionPerformed(evt);
             }
         });
+        add(cbHeroe1);
+        cbHeroe1.setBounds(76, 223, 190, 33);
 
         prueba.setMinimumSize(new java.awt.Dimension(48, 48));
+        add(prueba);
+        prueba.setBounds(160, 410, 48, 48);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbHeroe1, 0, 190, Short.MAX_VALUE)
-                    .addComponent(lbHeroe1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(237, 237, 237)
-                .addComponent(prueba, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(729, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(lbHeroe1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbHeroe1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(prueba, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(464, Short.MAX_VALUE))
-        );
+        lbHeroe2.setMinimumSize(new java.awt.Dimension(144, 144));
+        add(lbHeroe2);
+        lbHeroe2.setBounds(310, 60, 190, 144);
+
+        cbHeroe2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbHeroe2ActionPerformed(evt);
+            }
+        });
+        add(cbHeroe2);
+        cbHeroe2.setBounds(310, 220, 190, 33);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe1ActionPerformed
         
         lbHeroe1.setIcon(new ImageIcon(heroes.get(cbHeroe1.getSelectedIndex()).getSprite().getCara()));
-        keyboard = new Keyboard(prueba, heroes.get(cbHeroe1.getSelectedIndex()).getSprite());
+        keyboard = new Keyboard(this.prueba, heroes.get(cbHeroe1.getSelectedIndex()).getSprite());
+        heroe1 = new Gamepad(this.prueba, heroes.get(cbHeroe1.getSelectedIndex()).getSprite());
     }//GEN-LAST:event_cbHeroe1ActionPerformed
+
+    private void cbHeroe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbHeroe2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbHeroe1;
+    private javax.swing.JComboBox<String> cbHeroe2;
     private javax.swing.JLabel lbHeroe1;
-    public javax.swing.JLabel prueba;
+    private javax.swing.JLabel lbHeroe2;
+    private static javax.swing.JLabel prueba;
     // End of variables declaration//GEN-END:variables
 }

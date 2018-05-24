@@ -8,7 +8,7 @@ public class MainScreen extends javax.swing.JFrame {
     public MainScreen() {
         initComponents();
 
-        this.setIconImage(new ImageIcon("src/resources/icon.png").getImage());
+        this.setIconImage(new ImageIcon("resources/icon.png").getImage());
         
         // Ajusta la ventana a Full Screen
         Globals.Main = MainScreen.this;
@@ -21,7 +21,7 @@ public class MainScreen extends javax.swing.JFrame {
         // Añade al Background el fondo 1 a Full Screen
         
         this.add(Globals.addBackground(new JLabel()));
-        Globals.setBackground(Globals.fullScreen, "src/resources/background1.jpg");
+        //Globals.setBackground(Globals.fullScreen, "src/resources/background1.jpg");
         
     }
 

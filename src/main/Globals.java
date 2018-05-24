@@ -20,7 +20,6 @@ public class Globals {
     private static JLabel Background;
     private static Principal Principal;
     private static newGame Game;
-    private static License Licencia;
 
     public static void setBackground(Dimension size, String rutaImagen) {
         
@@ -45,14 +44,6 @@ public class Globals {
     public static void setPrincipal(Principal principal){
         
         Principal = principal;
-    }
-
-    public static License getLicencia() {
-        return Licencia;
-    }
-    public static void setLicencia(License licencia){
-        
-        Licencia = licencia;
     }
     
     public static newGame getGame() {

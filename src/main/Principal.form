@@ -31,16 +31,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="lbLoadGame" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbExit" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbLicense" alignment="1" min="-2" pref="228" max="-2" attributes="0"/>
+                          <Component id="lbExit" alignment="1" max="32767" attributes="0"/>
                           <Component id="lbOptions" alignment="1" min="-2" pref="228" max="-2" attributes="0"/>
                           <Component id="lbNewGame" alignment="1" min="-2" pref="228" max="-2" attributes="0"/>
+                          <Component id="lbLicense" alignment="1" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="707" max="32767" attributes="0"/>
                       <Component id="lbBrand" min="-2" pref="500" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -72,7 +72,7 @@
     <Component class="javax.swing.JLabel" name="lbBrand">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/resources/brand.png"/>
+          <Image iconType="2" name="C:\Users\Kazuto\Documents\NetBeansProjects\Descent\resources\brand.png"/>
         </Property>
       </Properties>
     </Component>
@@ -103,7 +103,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Licencia"/>
+        <Property name="text" type="java.lang.String" value="Texto de Prueba"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbOptions">
