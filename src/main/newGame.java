@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import util.*;
 
 public class newGame extends javax.swing.JPanel {
@@ -31,8 +32,8 @@ public class newGame extends javax.swing.JPanel {
         //new Heroe("Paladin", new ImageIcon("resources/sprites/heroes/paladin.gif"), 18, 4, 2, 3, 1);
         setupComboBox(cbHeroe1);
         
-        
-        this.setBackground(new Color(0, 0, 0, 0));
+        this.add(Globals.addBackground(new JLabel()));
+        Globals.setBackground(Globals.fullScreen, "resources/mapa1.jpg");//new Color(0, 0, 0, 0));
         Globals.getBackground().setVisible(true);
     }
 

@@ -21,7 +21,7 @@ public class MainScreen extends javax.swing.JFrame {
         // Añade al Background el fondo 1 a Full Screen
         
         this.add(Globals.addBackground(new JLabel()));
-        //Globals.setBackground(Globals.fullScreen, "src/resources/background1.jpg");
+        Globals.setBackground(Globals.fullScreen, "resources/background1.jpg");
         
     }
 

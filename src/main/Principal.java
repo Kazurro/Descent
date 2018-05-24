@@ -20,7 +20,6 @@ public class Principal extends javax.swing.JPanel {
                
                 Globals.getPrincipal().setVisible(false);
                 Globals.Main.repaint();
-                Globals.getBackground().setVisible(false);
                 Globals.Main.add(new newGame());
             }
         });
