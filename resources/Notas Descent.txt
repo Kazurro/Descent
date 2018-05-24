@@ -1,0 +1,41 @@
+Resolución minima: 1280 * 720
+Resolución pantalla: FullScreen obligatorio.
+
+Loading {
+	- Post-Loading con logo de Game Motion.
+	- Texto centrado en la pantalla hablando del guardado automatico del juego.
+}
+
+Primera Pantalla {
+	- Fondo animado, con parte de fondo fijo en otro layer.
+	- Logo (arriba a la derecha). Debajo de el la versión de la App.
+	- Textos abajo a la derecha ( 	Cargar partida
+					Partida nueva
+					Repeticion
+					Opciones
+					Licencia
+					Salir del Juego )
+}
+
+Partida nueva {
+	- Breve explicación y inicia juego
+}
+
+Repetición {}
+
+Opciones {
+	- Titulo opciones (arriba a la izquierda)
+	- Caja scrollable con 3 cabeceras (Opciones generales, Controles generales, Controles mando)
+	- Caja de descripción abajo (centrado)
+	- Guardar opciones y cargar predeterminadas (abajo a la derecha)
+}
+
+Licencia {
+	- Logo Game Motion
+	- Derechos de mierdiautor, etc
+	- Enlaces nuestros (mail, github, etc)
+}
+
+Salir del Juego {
+	- Genera ventana de (Si / No) preguntando si esta seguro.
+}
