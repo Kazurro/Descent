@@ -1,16 +1,17 @@
 package util;
 
+import characters.Animation;
 import characters.Sprite;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Timer;
-import java.util.TimerTask;
+import javafx.scene.input.KeyCode;
 import javax.swing.JLabel;
 import main.Globals;
 
 public class Keyboard implements KeyListener {
     
     private Sprite sprite;
+    private Animation animacion;
     private JLabel label;
     private int y = 0;
     private int x = 0;
@@ -25,6 +26,11 @@ public class Keyboard implements KeyListener {
         Globals.Main.setFocusable(true);
     }
     
+    public void setAnimation(Animation animacion){
+        
+        this.animacion = animacion;
+    }
+    
     @Override public void keyTyped(KeyEvent e) {
         
         Globals.Main.repaint();
@@ -34,6 +40,7 @@ public class Keyboard implements KeyListener {
             case "Derecha": x += 10; label.setIcon(sprite.getRightAnimation());  break;
             case "Abajo": y += 10; label.setIcon(sprite.getBottomAnimation());  break;
             case "Izquierda": x -= 10; label.setIcon(sprite.getLeftAnimation());  break;
+            case "R": animacion.startAnimation(); break;
             default: break;
         }
         
@@ -43,24 +50,17 @@ public class Keyboard implements KeyListener {
     @Override public void keyPressed(KeyEvent e) {
 	//System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
         Globals.Main.repaint();
-        
-        TimerTask timerTask = new TimerTask() { 
-            @Override public void run() { 
 
-                switch(KeyEvent.getKeyText(e.getKeyCode())){
-                    case "Arriba": y -= 10; label.setIcon(sprite.getTopAnimation()); break;
-                    case "Derecha": x += 10; label.setIcon(sprite.getRightAnimation()); break;
-                    case "Abajo": label.setIcon(sprite.getBottomAnimation()); y += 10; break;
-                    case "Izquierda": label.setIcon(sprite.getLeftAnimation()); x -= 10; break;
-                    default: break;
-                }
+        switch(KeyEvent.getKeyText(e.getKeyCode())){
+            case "Arriba": y -= 10; label.setIcon(sprite.getTopAnimation()); break;
+            case "Derecha": x += 10; label.setIcon(sprite.getRightAnimation()); break;
+            case "Abajo": label.setIcon(sprite.getBottomAnimation()); y += 10; break;
+            case "Izquierda": label.setIcon(sprite.getLeftAnimation()); x -= 10; break;
+            case "R": animacion.startAnimation(); break;
+            default: break;
+        }
                 
-                label.setLocation(x, y);
-            } 
-        }; 
-
-        Timer timer = new Timer(); 
-        timer.scheduleAtFixedRate(timerTask, 0, 100000000);  
+        label.setLocation(x, y);label.repaint();
     }
 
     @Override public void keyReleased(KeyEvent e) {}
