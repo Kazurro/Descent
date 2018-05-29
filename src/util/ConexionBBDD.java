@@ -14,11 +14,15 @@ public class ConexionBBDD {
     private final Statement prep;
     private ResultSet consulta;
     
+    // Conecta con la BBDD
+    
     public ConexionBBDD(String ruta) throws SQLException {
         
         conexion = DriverManager.getConnection("jdbc:sqlite:" + ruta);
         prep = conexion.createStatement();
     }
+    
+    // Permite ejecutar Query's facilmente
     
     public void Query(int modo, String nombreTabla, String condicion){
 
@@ -32,6 +36,8 @@ public class ConexionBBDD {
             
         } catch (SQLException ex) {}
     }
+    
+    // Instancia los heroes guardados en la BBDD
     
     public void cargarHeroes(){
         

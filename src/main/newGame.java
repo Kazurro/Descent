@@ -1,25 +1,24 @@
 package main;
 
-import util.Animation;
-import static characters.Heroe.heroes;
+import characters.ArrayListed;
 import characters.Heroe;
-import characters.Sprite;
+import util.Animation;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import util.*;
+import util.ConexionBBDD;
+import util.Gamepad;
 
 public class newGame extends javax.swing.JPanel {
     
     ConexionBBDD conexion; 
-    private Keyboard keyboard;
+    //private Keyboard keyboard;
     private Gamepad heroe1;
     private Animation animacion;
+    private Heroe heroeSelected;
     
     public newGame() {
         initComponents();
@@ -33,19 +32,21 @@ public class newGame extends javax.swing.JPanel {
             conexion.cargarHeroes();
             setupComboBox(cbHeroe1);
         } catch (SQLException ex) {}
-        
-        
+
+        // Carga el mapa de la partida en un JLabel situado detras de todo
         
         this.add(Globals.addBackground(new JLabel()));
         Globals.setBackground(Globals.fullScreen, "resources/mapa1.jpg");//new Color(0, 0, 0, 0));
         Globals.getBackground().setVisible(true);
     }
 
+    // Carga los heroes en el ComboBox
+    
     public static void setupComboBox(JComboBox seleccion){
         
         ArrayList<String> selHeroes = new ArrayList<>();
         
-        heroes.forEach((heroe) -> {
+        ArrayListed.heroes.forEach((heroe) -> {
             selHeroes.add(heroe.getNombre());
         });
         
@@ -84,17 +85,24 @@ public class newGame extends javax.swing.JPanel {
         lbAnimacion.setBounds(830, 120, 160, 130);
     }// </editor-fold>//GEN-END:initComponents
 
+    // Genera los movimientos del personaje que se selecciona
+    
     private void cbHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe1ActionPerformed
         prueba.setIcon(null); prueba.repaint();
-        // Muestro cara del pj seleccionado
-        lbHeroe1.setIcon(new ImageIcon(heroes.get(cbHeroe1.getSelectedIndex()).getSprite().getCara()));
         
-        // Inicializo los movimientos y animaciones del pj selecionado
-        keyboard = new Keyboard(this.prueba, heroes.get(cbHeroe1.getSelectedIndex()).getSprite());
+        heroeSelected = ArrayListed.heroes.get(cbHeroe1.getSelectedIndex());
         
-        heroe1 = new Gamepad(this.prueba, heroes.get(cbHeroe1.getSelectedIndex()).getSprite());
-        keyboard.setAnimation(new Animation("resources/Animaciones/slash3.png", lbAnimacion));
-
+        // Muestro cara del Heroe seleccionado
+        lbHeroe1.setIcon(new ImageIcon(heroeSelected.getSprite().getCara()));
+        
+        // Inicializo los movimientos y animaciones del Heroe selecionado
+        heroeSelected.getKeyboard().setLabel(this.prueba);
+        this.prueba.transferFocus();
+        //keyboard = new Keyboard(this.prueba, heroes.get(cbHeroe1.getSelectedIndex()).getSprite());
+        
+        
+        heroeSelected.getKeyboard().setAnimation(new Animation("resources/Animaciones/slash3.png", lbAnimacion));
+        //heroe1 = new Gamepad(this.prueba, heroes.get(cbHeroe1.getSelectedIndex()).getSprite());
     }//GEN-LAST:event_cbHeroe1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
