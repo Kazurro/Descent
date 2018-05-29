@@ -1,10 +1,8 @@
 package util;
 
-import characters.Animation;
 import characters.Sprite;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javafx.scene.input.KeyCode;
 import javax.swing.JLabel;
 import main.Globals;
 

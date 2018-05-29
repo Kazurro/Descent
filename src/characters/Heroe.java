@@ -11,7 +11,6 @@ public class Heroe extends Generic {
     private Armadura armadura;
     
     public Heroe(String nombre, Sprite sprite, int vida, int daño, int defensa, int movimiento, int rango) {
-        
         super(nombre, sprite, vida, daño, defensa, movimiento, rango);
         
         heroes.add(this);

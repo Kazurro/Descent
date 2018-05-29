@@ -1,10 +1,13 @@
 package main;
 
-import characters.Animation;
+import util.Animation;
 import static characters.Heroe.heroes;
 import characters.Heroe;
 import characters.Sprite;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -13,6 +16,7 @@ import util.*;
 
 public class newGame extends javax.swing.JPanel {
     
+    ConexionBBDD conexion; 
     private Keyboard keyboard;
     private Gamepad heroe1;
     private Animation animacion;
@@ -22,16 +26,15 @@ public class newGame extends javax.swing.JPanel {
         Globals.setGame(this);
         this.setBounds(Globals.location);
         
-        // Asesino
-        new Heroe("Asesino", new Sprite("resources/sprites/heroes/asesino/"), 12, 5, 2, 4, 1);
+        // Genero una nueva conexión
         
-        // Guerrero
-        //new Heroe("Cleriga", new ImageIcon("resources/sprites/heroes/cleriga.gif"), 16, 2, 2,3, 2);
-        new Heroe("Guerrero", new Sprite("resources/sprites/heroes/guerrero/"), 18, 4, 2,3, 1);
-        //new Heroe("Luchador", new ImageIcon("resources/sprites/heroes/luchador.gif"), 16, 5, 2,3, 2);
-        //new Heroe("Mago", new ImageIcon("resources/sprites/heroes/mago.gif"), 12, 4, 2,3, 3);
-        //new Heroe("Paladin", new ImageIcon("resources/sprites/heroes/paladin.gif"), 18, 4, 2, 3, 1);
-        setupComboBox(cbHeroe1);
+        try {
+            conexion = new ConexionBBDD("C:/Descent/BBDD.db");
+            conexion.cargarHeroes();
+            setupComboBox(cbHeroe1);
+        } catch (SQLException ex) {}
+        
+        
         
         this.add(Globals.addBackground(new JLabel()));
         Globals.setBackground(Globals.fullScreen, "resources/mapa1.jpg");//new Color(0, 0, 0, 0));
@@ -82,12 +85,16 @@ public class newGame extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe1ActionPerformed
-        this.prueba.setIcon(null); prueba.repaint();
+        prueba.setIcon(null); prueba.repaint();
+        // Muestro cara del pj seleccionado
         lbHeroe1.setIcon(new ImageIcon(heroes.get(cbHeroe1.getSelectedIndex()).getSprite().getCara()));
+        
+        // Inicializo los movimientos y animaciones del pj selecionado
         keyboard = new Keyboard(this.prueba, heroes.get(cbHeroe1.getSelectedIndex()).getSprite());
         
         heroe1 = new Gamepad(this.prueba, heroes.get(cbHeroe1.getSelectedIndex()).getSprite());
         keyboard.setAnimation(new Animation("resources/Animaciones/slash3.png", lbAnimacion));
+
     }//GEN-LAST:event_cbHeroe1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
