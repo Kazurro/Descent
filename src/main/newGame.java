@@ -89,6 +89,9 @@ public class newGame extends javax.swing.JPanel {
     
     private void cbHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe1ActionPerformed
         prueba.setIcon(null); prueba.repaint();
+        try {
+            heroeSelected.getKeyboard().transferListener();
+        } catch(Exception except){}
         
         heroeSelected = ArrayListed.heroes.get(cbHeroe1.getSelectedIndex());
         

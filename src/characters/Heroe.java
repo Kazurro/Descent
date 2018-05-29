@@ -17,7 +17,7 @@ public class Heroe extends Generic {
     // Gestiona el Keyboard asociado al heroe
     
     public Keyboard getKeyboard() {
-        return keyboard;
+        return this.keyboard;
     }
     
     // Constructor del Heroe (Hereda de Generic)
@@ -78,7 +78,7 @@ public class Heroe extends Generic {
         }
         
         public void setLabel(JLabel label){
-        
+
             this.label = label;
             Globals.Main.addKeyListener(Keyboard.this);
             Globals.Main.setFocusable(true);
@@ -87,6 +87,11 @@ public class Heroe extends Generic {
         public void setAnimation(Animation animacion){
         
             this.animacion = animacion;
+        }
+        
+        public void transferListener(){
+            
+            Globals.Main.removeKeyListener(Keyboard.this);
         }
     
         @Override public void keyTyped(KeyEvent e) {
