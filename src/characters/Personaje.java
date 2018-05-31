@@ -1,6 +1,6 @@
 package characters;
 
-public class Generic {
+public class Personaje {
 
     private final Sprite sprite;
     private final String nombre;
@@ -12,7 +12,7 @@ public class Generic {
     
     // Constructor
 
-    public Generic(String nombre, Sprite sprite, int vida, int daño, int defensa, int movimiento, int rango) {
+    public Personaje(String nombre, Sprite sprite, int vida, int daño, int defensa, int movimiento, int rango) {
         this.nombre = nombre;
         this.sprite = sprite;
         this.vida = vida;
