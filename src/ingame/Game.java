@@ -2,6 +2,7 @@ package ingame;
 
 import characters.Heroe;
 import main.Globals;
+import util.Eventos;
 
 public class Game extends javax.swing.JFrame {
 
@@ -9,7 +10,7 @@ public class Game extends javax.swing.JFrame {
     private static Heroe heroe2;
     private static Heroe heroe3;
     private static Heroe heroe4;
-    private static int cambio = 1;
+    private static int turno = 1;
     //Paneles
     private OvalPanel jP = new OvalPanel();
     private PanelFondo jF = new PanelFondo();
@@ -17,26 +18,26 @@ public class Game extends javax.swing.JFrame {
     public Game(Heroe heroe1, Heroe heroe2, Heroe heroe3, Heroe heroe4) {
         initComponents();
         
-        this.add(jP);
-        this.add(jF);
-        
-        PanelHeroes.setSize(Globals.fullScreen);
-
+        // Carga el Frame a FullScreen
         this.setSize(Globals.fullScreen);
         Globals.Partida = this;
-
+        PanelHeroes.setSize(Globals.fullScreen);
+        
+        // Carga el Mapa de fondo a FullScreen
+        this.add(jP);
+        this.add(jF);
+        jP.setBounds(Globals.location);
+        jF.setBounds(Globals.location);
+        
+        // Asigna los heroes seleccionados a sus respectivas JLabel
         this.heroe1 = heroe1;
         this.heroe2 = heroe2;
         this.heroe3 = heroe3;
         this.heroe4 = heroe4;
         
-        // Carga los heroes
-
+        // Asigna el primer turno al Heroe 1
         heroe1.getKeyboard().setLabel(lbHeroe1);
         heroe1.getGamePad().setGamePad(lbHeroe1);
-
-        jP.setBounds(Globals.location);
-        jF.setBounds(Globals.location);
     }
 
     @SuppressWarnings("unchecked")
@@ -83,42 +84,14 @@ public class Game extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        switch (cambio) {
-            case 1:
-                heroe1.getKeyboard().transferListener();
-                heroe1.getGamePad().transferListener();
-                heroe2.getGamePad().setGamePad(lbHeroe2);
-                heroe2.getKeyboard().setLabel(lbHeroe2);
-                lbHeroe2.transferFocus();
-                cambio += 1;
-                break;
-            case 2:
-                heroe2.getKeyboard().transferListener();
-                heroe2.getGamePad().transferListener();
-                heroe3.getGamePad().setGamePad(lbHeroe3);
-                heroe3.getKeyboard().setLabel(lbHeroe3);
-                lbHeroe3.transferFocus();
-                cambio += 1;
-                break;
-            case 3:
-                heroe3.getKeyboard().transferListener();
-                heroe3.getGamePad().transferListener();
-                heroe4.getGamePad().setGamePad(lbHeroe4);
-                heroe4.getKeyboard().setLabel(lbHeroe4);
-                lbHeroe4.transferFocus();
-                cambio += 1;
-                break;
-            case 4:
-                heroe4.getKeyboard().transferListener();
-                heroe4.getGamePad().transferListener();
-                heroe1.getGamePad().setGamePad(lbHeroe1);
-                heroe1.getKeyboard().setLabel(lbHeroe1);
-                lbHeroe1.transferFocus();
-                cambio = 1;
-                break;
+        // Gestiona el turno de turno (Heroe actual, Heroe siguiente, JLabel de heroe siguiente)
+        switch (turno) {
+            case 1: Eventos.pasarTurno(heroe1, heroe2, lbHeroe2); turno += 1; break;
+            case 2: Eventos.pasarTurno(heroe2, heroe3, lbHeroe3); turno += 1; break;
+            case 3: Eventos.pasarTurno(heroe3, heroe4, lbHeroe4); turno += 1; break;
+            case 4: Eventos.pasarTurno(heroe4, heroe1, lbHeroe1); turno = 1; break;
             default: break;
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
