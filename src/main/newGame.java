@@ -3,6 +3,7 @@ package main;
 import characters.ArrayListed;
 import characters.Heroe;
 import ingame.Game;
+import ingame.OvalPanel;
 import util.Animation;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class newGame extends javax.swing.JPanel {
         // Genero una nueva conexión
         
         try {
-            conexion = new ConexionBBDD("C:/Descent/BBDD.db");
+            conexion = new ConexionBBDD("BBDD.db");
             conexion.cargarHeroes();
             setupComboBox(cbHeroe1);
             setupComboBox(cbHeroe2);
@@ -190,7 +191,7 @@ public class newGame extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Game game = new Game(heroe1, heroe2, heroe3, heroe4);
-        game.setVisible(true);
+        game.setVisible(true);     
         Globals.Main.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
