@@ -77,8 +77,10 @@ public class Heroe extends Personaje {
         public Keyboard() {
             //y = (int) label.getLocation().getY();
             //x = (int) label.getLocation().getX();
-            y = 400;
-            x = 140;
+            
+            // Posicion de salida del HEROE
+            y = 395;
+            x = 130;
         }
 
         public void setLabel(JLabel label) {

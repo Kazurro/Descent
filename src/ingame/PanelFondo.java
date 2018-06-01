@@ -26,11 +26,15 @@ public class PanelFondo extends javax.swing.JPanel {
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-        // Los tamaños de los pixeles quedan en 32px
-        int tamañoPantallaX = this.getWidth(); // 1600 (50 * 32px) //1650 (50 * 33px)
-        int tamañoPantallay = this.getHeight(); // 704 (22 * 32px)// 704 (22 * 33px)
+
+        int tamañoPantallaX = this.getWidth();
+        int tamañoPantallay = this.getHeight();
+
+        // Tamaño de los cuadrados
         int width = 32;
         int height = 32;
+        
+         // Posición de salida 
         int posicionx = 0;//160 (32px)//135 (33px)
         int posiciony = 0;//188 (32px)//177 (33px)  
 
@@ -47,13 +51,11 @@ public class PanelFondo extends javax.swing.JPanel {
             if (posicionx > tamañoPantallaX) {
                 posicionx = 0;
                 posiciony += 32;
-
             }
-
-            g.drawRect(posicionx, posiciony, width, height);
+            
             //Dibuja Casilla
-            g.drawImage(img, posicionx, posiciony, null);
-
+            g2.drawImage(img, posicionx, posiciony, null);
+          
             posicionx += 32;
 
         } while (posiciony <= tamañoPantallay);
