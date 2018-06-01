@@ -2,10 +2,7 @@ package characters;
 
 import ch.aplu.xboxcontroller.XboxController;
 import ch.aplu.xboxcontroller.XboxControllerAdapter;
-import static ingame.Game.ContenedorMapa;
 import static ingame.Game.PanelHeroes;
-import static ingame.Game.jF;
-import static ingame.Game.jP;
 import items.Arma;
 import items.Armadura;
 import java.awt.Color;
@@ -106,15 +103,14 @@ public class Heroe extends Personaje {
         @Override
         public void keyTyped(KeyEvent e) {
             Globals.Partida.repaint();
-                    ContenedorMapa.add(jP);
-        ContenedorMapa.add(jF);
-        ContenedorMapa.setSize(Globals.fullScreen);
-        ContenedorMapa.setPreferredSize(Globals.fullScreen);
         
-
+            // `pruebas
         PanelHeroes.setBackground(new Color(0, 0, 0, 0));
         PanelHeroes.setSize(Globals.fullScreen);
         PanelHeroes.setPreferredSize(Globals.fullScreen);
+        
+        
+        
             // Globals.Partida.PanelHeroes.repaint();
             switch (KeyEvent.getKeyText(e.getKeyCode())) {
                 case "Arriba":
@@ -148,10 +144,7 @@ public class Heroe extends Personaje {
         public void keyPressed(KeyEvent e) {
             //System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
             Globals.Partida.repaint();            
-                    ContenedorMapa.add(jP);
-        ContenedorMapa.add(jF);
-        ContenedorMapa.setSize(Globals.fullScreen);
-        ContenedorMapa.setPreferredSize(Globals.fullScreen);
+            // pruebas
         
 
         PanelHeroes.setBackground(new Color(0, 0, 0, 0));

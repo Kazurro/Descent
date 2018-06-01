@@ -3,8 +3,6 @@ package main;
 import characters.ArrayListed;
 import characters.Heroe;
 import ingame.Game;
-import ingame.OvalPanel;
-import util.Animation;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;

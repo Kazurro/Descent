@@ -1,11 +1,6 @@
 package ingame;
 
-import characters.ArrayListed;
 import characters.Heroe;
-import java.awt.Color;
-import java.awt.GridBagLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import main.Globals;
 
 public class Game extends javax.swing.JFrame {
@@ -16,24 +11,16 @@ public class Game extends javax.swing.JFrame {
     private static Heroe heroe4;
     private static int cambio = 1;
     //Paneles
-    public static OvalPanel jP = new OvalPanel();
-    public static PanelFondo jF = new PanelFondo();
-
-    GridBagLayout layout = new GridBagLayout();
-
+    private OvalPanel jP = new OvalPanel();
+    private PanelFondo jF = new PanelFondo();
+    
     public Game(Heroe heroe1, Heroe heroe2, Heroe heroe3, Heroe heroe4) {
         initComponents();
-        // Agregamos paneles
-        ContenedorMapa.setLayout(layout);
-        ContenedorMapa.add(jP);
-        ContenedorMapa.add(jF);
-        ContenedorMapa.setSize(Globals.fullScreen);
-        ContenedorMapa.setPreferredSize(Globals.fullScreen);
         
-
-        PanelHeroes.setBackground(new Color(0, 0, 0, 0));
+        this.add(jP);
+        this.add(jF);
+        
         PanelHeroes.setSize(Globals.fullScreen);
-        PanelHeroes.setPreferredSize(Globals.fullScreen);
 
         this.setSize(Globals.fullScreen);
         Globals.Partida = this;
@@ -43,25 +30,13 @@ public class Game extends javax.swing.JFrame {
         this.heroe3 = heroe3;
         this.heroe4 = heroe4;
         
-//      // Carga los heroes
-
-        try {
-            heroe1.getKeyboard().transferListener();
-            heroe1.getGamePad().transferListener();
-
-        } catch (Exception except) {
-        }
+        // Carga los heroes
 
         heroe1.getKeyboard().setLabel(lbHeroe1);
         heroe1.getGamePad().setGamePad(lbHeroe1);
-        //heroe2.getKeyboard().setLabel(lbHeroe2);
-        //heroe3.getKeyboard().setLabel(lbHeroe1);
-        //heroe4.getKeyboard().setLabel(lbHeroe1);
 
-        // Carga el mapa de la partida en un JLabel situado detras de todo
-//        this.add(Globals.addBackground(new JLabel()));
-//        Globals.setBackground(Globals.fullScreen, "resources/mapa1.jpg");
-//        Globals.getBackground().setVisible(true);
+        jP.setBounds(Globals.location);
+        jF.setBounds(Globals.location);
     }
 
     @SuppressWarnings("unchecked")
@@ -74,7 +49,6 @@ public class Game extends javax.swing.JFrame {
         lbHeroe2 = new javax.swing.JLabel();
         lbHeroe1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        ContenedorMapa = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -104,28 +78,10 @@ public class Game extends javax.swing.JFrame {
         getContentPane().add(PanelHeroes);
         PanelHeroes.setBounds(110, 10, 1010, 450);
 
-        javax.swing.GroupLayout ContenedorMapaLayout = new javax.swing.GroupLayout(ContenedorMapa);
-        ContenedorMapa.setLayout(ContenedorMapaLayout);
-        ContenedorMapaLayout.setHorizontalGroup(
-            ContenedorMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1060, Short.MAX_VALUE)
-        );
-        ContenedorMapaLayout.setVerticalGroup(
-            ContenedorMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(ContenedorMapa);
-        ContenedorMapa.setBounds(0, 0, 1060, 190);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jP.setBounds(Globals.location);
-        jP.setVisible(true);
-        jF.setBounds(Globals.location);
-        jF.setVisible(true);
 
         switch (cambio) {
             case 1:
@@ -160,8 +116,7 @@ public class Game extends javax.swing.JFrame {
                 lbHeroe1.transferFocus();
                 cambio = 1;
                 break;
-            default:
-                break;
+            default: break;
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -174,7 +129,6 @@ public class Game extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JPanel ContenedorMapa;
     public static javax.swing.JPanel PanelHeroes;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel lbHeroe1;

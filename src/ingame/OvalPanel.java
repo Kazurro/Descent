@@ -70,9 +70,10 @@ public class OvalPanel extends JPanel {
                 posiciony += 32;
                 contary += 1;
             }
-            g2.drawRect(posicionx, posiciony, width, height);
+          
             //Dibuja Casilla
             g2.drawImage(img, posicionx, posiciony, this);
+             g2.drawRect(posicionx, posiciony, width, height);
             posicionx += 32;
             contarx += 1;
 
