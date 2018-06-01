@@ -2,6 +2,7 @@ package ingame;
 
 import characters.ArrayListed;
 import characters.Heroe;
+import java.awt.GridBagLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import main.Globals;
@@ -13,9 +14,19 @@ public class Game extends javax.swing.JFrame {
     private static Heroe heroe3;
     private static Heroe heroe4;
     private static int cambio = 1;
+    //Paneles
+    OvalPanel jP = new OvalPanel();
+    PanelFondo jF = new PanelFondo();
+
+    GridBagLayout layout = new GridBagLayout();
     
     public Game(Heroe heroe1, Heroe heroe2, Heroe heroe3, Heroe heroe4) {
         initComponents();
+        // Agregamos paneles
+        ContenedorMapa.setLayout(layout);
+        ContenedorMapa.add(jP);
+        ContenedorMapa.add(jF);
+        
         this.setSize(Globals.fullScreen);
         Globals.Partida = this;
         
@@ -42,6 +53,15 @@ public class Game extends javax.swing.JFrame {
         this.add(Globals.addBackground(new JLabel()));
         Globals.setBackground(Globals.fullScreen, "resources/mapa1.jpg");
         Globals.getBackground().setVisible(true);
+        
+         jP.setBounds(0, 0, Globals.fullScreen.width, Globals.fullScreen.height);
+//        jp.setBackground(Color.yellow);
+        jP.setVisible(true);
+        jF.setBounds(0, 0, Globals.fullScreen.width, Globals.fullScreen.height);
+//        jp.setBackground(Color.yellow);
+
+jF.setVisible(true);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -53,6 +73,7 @@ public class Game extends javax.swing.JFrame {
         lbHeroe3 = new javax.swing.JLabel();
         lbHeroe4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        ContenedorMapa = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -76,6 +97,20 @@ public class Game extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1);
         jButton1.setBounds(690, 40, 230, 60);
+
+        javax.swing.GroupLayout ContenedorMapaLayout = new javax.swing.GroupLayout(ContenedorMapa);
+        ContenedorMapa.setLayout(ContenedorMapaLayout);
+        ContenedorMapaLayout.setHorizontalGroup(
+            ContenedorMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 230, Short.MAX_VALUE)
+        );
+        ContenedorMapaLayout.setVerticalGroup(
+            ContenedorMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(ContenedorMapa);
+        ContenedorMapa.setBounds(0, 0, 230, 190);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -124,6 +159,7 @@ public class Game extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ContenedorMapa;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel lbHeroe1;
     private javax.swing.JLabel lbHeroe2;
