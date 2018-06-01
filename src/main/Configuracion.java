@@ -1,8 +1,8 @@
 package main;
 
-public class Options extends javax.swing.JPanel {
+public class Configuracion extends javax.swing.JPanel {
 
-    public Options() {
+    public Configuracion() {
         initComponents();
         
         this.setSize(Globals.fullScreen);

@@ -30,17 +30,17 @@ public class Globals {
     }
 
     public static JLabel getBackground() {
+        
         return Background;
     }
     
     public static JLabel addBackground(JLabel background) {
-        
-        Background = background;
-        
-        return Background;
+
+        return Background = background;
     }
 
     public static JPanel getPrincipal() {
+        
         return Principal;
     } 
     public static void setPrincipal(Principal principal){

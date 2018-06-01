@@ -38,15 +38,13 @@ public class newGame extends javax.swing.JPanel {
             setupComboBox(cbHeroe3);
             setupComboBox(cbHeroe4);
         } catch (SQLException ex) {}
-
-        // Genero las barras de info de los Heroes
-
         
-        // Carga el mapa de la partida en un JLabel situado detras de todo
+        // Carga el fondo de selección de Heroe
         
-        this.add(Globals.addBackground(new JLabel()));
-        Globals.setBackground(Globals.fullScreen, "resources/mapa1.jpg");
         Globals.getBackground().setVisible(false);
+        this.add(Globals.addBackground(new JLabel()));
+        Globals.setBackground(Globals.fullScreen, "resources/background2.jpg");
+        Globals.getBackground().setVisible(true);
     }
 
     // Carga los heroes en el ComboBox
@@ -165,38 +163,10 @@ public class newGame extends javax.swing.JPanel {
         
         heroe1 = ArrayListed.heroes.get(cbHeroe1.getSelectedIndex());
         lbHeroe1.setIcon(new ImageIcon(heroe1.getSprite().getCara()));
-        
-        /*JLabel label = new JLabel();
-        label.setLocation(140, 400);
-        this.add(label);
-
-        prueba.setIcon(null); prueba.repaint();
-        try {
-            heroeSelected.getKeyboard().transferListener();
-            heroeSelected.getGamePad().transferListener();
-
-        } catch(Exception except){}
 
         heroeSelected = ArrayListed.heroes.get(cbHeroe1.getSelectedIndex());
 
-        // Vida en la progress bar
-
-        hpBar1.setValue(10);
-        hpBar1.setMaximum(heroeSelected.getVida());
-
-        // ULTIMO EXPERIMENTO
-
-        // Muestro cara del Heroe seleccionado
-        lbHeroe1.setIcon(new ImageIcon(heroeSelected.getSprite().getCara()));
-
-        // Inicializo los movimientos y animaciones del Heroe selecionado
-        heroeSelected.getKeyboard().setLabel(this.prueba);
-        heroeSelected.getGamePad().setGamePad(this.prueba);
-        this.prueba.transferFocus();
-
-        //keyboard = new Keyboard(this.prueba, heroes.get(cbHeroe1.getSelectedIndex()).getSprite());
-
-        heroeSelected.getKeyboard().setAnimation(new Animation("resources/Animaciones/slash3.png", lbAnimacion));^*/
+        //heroeSelected.getKeyboard().setAnimation(new Animation("resources/Animaciones/slash3.png", lbAnimacion));
     }//GEN-LAST:event_cbHeroe1ActionPerformed
 
     private void cbHeroe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe2ActionPerformed

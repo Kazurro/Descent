@@ -88,25 +88,28 @@ public class Game extends javax.swing.JFrame {
                 heroe1.getGamePad().transferListener();
                 heroe2.getGamePad().setGamePad(lbHeroe2);
                 heroe2.getKeyboard().setLabel(lbHeroe2);
+                lbHeroe2.transferFocus();
                 cambio += 1; break;
             case 2:
                 heroe2.getKeyboard().transferListener();
                 heroe2.getGamePad().transferListener();
                 heroe3.getGamePad().setGamePad(lbHeroe3);
                 heroe3.getKeyboard().setLabel(lbHeroe3);
+                lbHeroe3.transferFocus();
                 cambio += 1; break;
             case 3:
                 heroe3.getKeyboard().transferListener();
                 heroe3.getGamePad().transferListener();
                 heroe4.getGamePad().setGamePad(lbHeroe4);
                 heroe4.getKeyboard().setLabel(lbHeroe4);
+                lbHeroe4.transferFocus();
                 cambio += 1; break;
             case 4:
                 heroe4.getKeyboard().transferListener();
                 heroe4.getGamePad().transferListener();
                 heroe1.getGamePad().setGamePad(lbHeroe1);
                 heroe1.getKeyboard().setLabel(lbHeroe1);
-                
+                lbHeroe1.transferFocus();
                 cambio = 1; break;
             default: break;
         }
