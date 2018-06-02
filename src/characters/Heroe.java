@@ -75,8 +75,6 @@ public class Heroe extends Personaje {
 
         // Asigna el JLabel en el que se generara el Heroe para administrar sus movimientos
         public Keyboard() {
-            //y = (int) label.getLocation().getY();
-            //x = (int) label.getLocation().getX();
             
             // Posicion de salida del HEROE
             y = 395;
@@ -88,7 +86,6 @@ public class Heroe extends Personaje {
             this.label = label;
             Globals.Partida.addKeyListener(Keyboard.this);
             Globals.Partida.setFocusable(true);
-
         }
 
         public void setAnimation(Animation animacion) {
@@ -99,21 +96,16 @@ public class Heroe extends Personaje {
         public void transferListener() {
 
             Globals.Partida.removeKeyListener(Keyboard.this);
-
         }
 
-        @Override
-        public void keyTyped(KeyEvent e) {
+        @Override public void keyTyped(KeyEvent e) {
             Globals.Partida.repaint();
         
             // `pruebas
-        PanelHeroes.setBackground(new Color(0, 0, 0, 0));
-        PanelHeroes.setSize(Globals.fullScreen);
-        PanelHeroes.setPreferredSize(Globals.fullScreen);
-        
-        
-        
-            // Globals.Partida.PanelHeroes.repaint();
+            /*PanelHeroes.setBackground(new Color(0, 0, 0, 0));
+            PanelHeroes.setSize(Globals.fullScreen);
+            PanelHeroes.setPreferredSize(Globals.fullScreen);*/
+            
             switch (KeyEvent.getKeyText(e.getKeyCode())) {
                 case "Arriba":
                     y -= 10;
@@ -142,16 +134,13 @@ public class Heroe extends Personaje {
             label.repaint();
         }
 
-        @Override
-        public void keyPressed(KeyEvent e) {
-            //System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
+        @Override public void keyPressed(KeyEvent e) {
             Globals.Partida.repaint();            
-            // pruebas
-        
-
-        PanelHeroes.setBackground(new Color(0, 0, 0, 0));
-        PanelHeroes.setSize(Globals.fullScreen);
-        PanelHeroes.setPreferredSize(Globals.fullScreen);
+            
+            // `pruebas
+            /*PanelHeroes.setBackground(new Color(0, 0, 0, 0));
+            PanelHeroes.setSize(Globals.fullScreen);
+            PanelHeroes.setPreferredSize(Globals.fullScreen);*/
           
             switch (KeyEvent.getKeyText(e.getKeyCode())) {
                 case "Arriba":
@@ -181,19 +170,17 @@ public class Heroe extends Personaje {
             label.repaint();
         }
 
-        @Override
-        public void keyReleased(KeyEvent e) {
+        @Override public void keyReleased(KeyEvent e) {
         }
     }
 
     // Clase Interna del Heroe que permite su movimiento y animación con mando de XBox
     public class Gamepad {
 
-        private XboxController xc;
+        private final XboxController xc = new XboxController();
 
         public Gamepad() {
 
-            xc = new XboxController();
             xc.setLeftThumbDeadZone(0.2);
         }
 
@@ -205,8 +192,7 @@ public class Heroe extends Personaje {
         public void setGamePad(JLabel label) {
 
             xc.addXboxControllerListener(new XboxControllerAdapter() {
-                @Override
-                public void isConnected(boolean connected) {
+                @Override public void isConnected(boolean connected) {
 
                     if (!connected) {
 
@@ -216,10 +202,9 @@ public class Heroe extends Personaje {
                 }
 
                 // Pad Cuadriculado
-                @Override
-                public void dpad(int direction, boolean pressed) {
+                @Override public void dpad(int direction, boolean pressed) {
 
-                    Globals.Partida.PanelHeroes.repaint();
+                    Globals.Partida.repaint();
 
                     switch (direction) {
                         case 0:
@@ -253,10 +238,9 @@ public class Heroe extends Personaje {
                 }
 
                 // Thumb Izquierdo
-                @Override
-                public void leftThumbDirection(double direction) {
+                @Override public void leftThumbDirection(double direction) {
 
-                    Globals.Partida.PanelHeroes.repaint();
+                    Globals.Partida.repaint();
 
                     if (direction > 315 && direction < 360 || direction > 0 && direction < 45) {
                         y -= 10;
@@ -278,5 +262,4 @@ public class Heroe extends Personaje {
             });
         }
     }
-
 }

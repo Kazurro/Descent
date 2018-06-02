@@ -19,11 +19,9 @@ public class Principal extends javax.swing.JPanel {
             @Override public void mouseClicked(MouseEvent e) { 
                
                 Globals.getPrincipal().setVisible(false);
-                
                 Globals.getBackground().setVisible(true);
                 Globals.Main.add(new newGame());
                 Globals.Main.repaint();
-                
             }
         });
         
@@ -114,7 +112,6 @@ public class Principal extends javax.swing.JPanel {
                 .addGap(167, 167, 167))
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lbBrand;

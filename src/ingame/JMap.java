@@ -3,80 +3,73 @@ package ingame;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class OvalPanel extends JPanel {
+public class JMap extends JPanel {
 
+    private Mapa mapa = null;
+    
     @Override public void paintComponent(Graphics g) {
         
         Graphics2D g2 = (Graphics2D) g;
-        // Los tamaños de los pixeles quedan en 32px
-        int tamañoPantallaX = 1600; // 1600 (50 * 32px) //1650 (50 * 33px)
-        int tamañoPantallay = 704; // 704 (22 * 32px)// 704 (22 * 33px)
         
-        // Tamaño de los cuadrados
-        int width = 32;
-        int height = 32;
+        // Tamaño de los cuadrados (Width y Height)
+        int tamaño = 32;
+        mapa = new Mapa();
         
         // Posición de salida 
-        int posicionx = 160;//160 (32px)//135 (33px)
-        int posiciony = 188;//188 (32px)//177 (33px)
+        int inicialX = 160;//160 (32px)//135 (33px)
+        int inicialY = 188;//188 (32px)//177 (33px)
 
-        ArrayList<Casilla> lista = new ArrayList();
-        Scanner scM;
+        // Escanea el fichero con las posiciones del Mapa y los añade a la clase 'Mapa'
         try {
+            Scanner scM = new Scanner(new File("mapa1.txt"));
             String[] cadena;
-
-            scM = new Scanner(new File("mapa1.txt"));
+            
             while (scM.hasNext()) {
                 cadena = scM.nextLine().split("\\|");
 
-                for (int i = 0; i < cadena.length; i++) {
+                for (String terreno: cadena) {
 
-                    lista.add(new Casilla(cadena[i]));
+                    mapa.getCasillas().add(new Casilla(terreno));
                 }
-
             }
-
+            
             scM.close();
-
-        } catch (IOException ex) {}
-
-        BufferedImage imagen = null;
+        } catch (FileNotFoundException ex) {}
+       
+        // Pinta la imagen de la respectiva casilla en el Panel 'JMap'
+        BufferedImage imgTerreno = null;
 
         try {
-            imagen = ImageIO.read(new File("resources/2.png"));
+            imgTerreno = ImageIO.read(new File("resources/2.png"));
         } catch (IOException ex) {}
-        
-        int contary = 0;
-        int contarx = 0;
-        Iterator<Casilla> it = lista.iterator();
-        while (it.hasNext()) {
-            Casilla e = it.next();
-            BufferedImage img = imagen.getSubimage(e.getTipo()[0], e.getTipo()[1], width, height);
-            if (posicionx >= tamañoPantallaX + 160) {
-                System.out.println("num vueltas X " + contarx + "num vueltas y " + contary);
-                posicionx = 160;
-                posiciony += 32;
-                contary += 1;
-            }
 
-            contarx += 1;
-            // Color a la rejilla del cuadrado
-           // g2.setColor(Color.yellow);
+        //Iterator<Casilla> it = lista.iterator();
+        Iterator<Casilla> it = mapa.getCasillas().iterator();
+        
+        while (it.hasNext()) {
+            Casilla casilla = it.next();    
+            BufferedImage imgPrint = imgTerreno.getSubimage(casilla.getTipo()[0], casilla.getTipo()[1], tamaño, tamaño);
+            
+            if (inicialX >= mapa.getTamañoX() + 160) {
+                inicialX = 160;
+                inicialY += 32;
+            }
+            // Color a la rejilla del cuadrado (AZUL)
+            //g2.setColor(new Color(0, 153, 255, 1));
 
             //Dibuja Casilla
-            g2.drawImage(img, posicionx, posiciony, this);
+            g2.drawImage(imgPrint, inicialX, inicialY, this);
 
             // Dibuja el cuadrado
-            //g2.drawRect(posicionx, posiciony, width, height);
-            posicionx += 32;
-
+            //g2.drawRect(inicialX, inicialY, tamaño, tamaño);
+            inicialX += 32;
         }
     }
 

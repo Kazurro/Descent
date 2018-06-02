@@ -11,9 +11,10 @@ public class Game extends javax.swing.JFrame {
     private static Heroe heroe3;
     private static Heroe heroe4;
     private static int turno = 1;
-    //Paneles
-    private OvalPanel jP = new OvalPanel();
-    private PanelFondo jF = new PanelFondo();
+    
+    // Paneles que generan el Mapa y sus Casillas
+    private final JMap jMap = new JMap();
+    private final PanelFondo jF = new PanelFondo();
     
     public Game(Heroe heroe1, Heroe heroe2, Heroe heroe3, Heroe heroe4) {
         initComponents();
@@ -24,9 +25,9 @@ public class Game extends javax.swing.JFrame {
         PanelHeroes.setSize(Globals.fullScreen);
         
         // Carga el Mapa de fondo a FullScreen
-        this.add(jP);
+        this.add(jMap);
         this.add(jF);
-        jP.setBounds(Globals.location);
+        jMap.setBounds(Globals.location);
         jF.setBounds(Globals.location);
         
         // Asigna los heroes seleccionados a sus respectivas JLabel

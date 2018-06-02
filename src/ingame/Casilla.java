@@ -1,10 +1,9 @@
 package ingame;
 
-import java.sql.Array;
-
 public class Casilla {
 
     private String tipo;
+    private final int tamaño = 32;
 
     public Casilla(String tipo) {
         this.tipo = tipo;

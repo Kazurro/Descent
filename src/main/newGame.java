@@ -14,14 +14,11 @@ import util.ConexionBBDD;
 public class newGame extends javax.swing.JPanel {
     
     private ConexionBBDD conexion; 
-    private Heroe heroeSelected;
     private Heroe heroe1;
     private Heroe heroe2;
     private Heroe heroe3;
     private Heroe heroe4;
-    
-    
-    
+
     public newGame() {
         initComponents();
         Globals.setGame(this);
@@ -65,18 +62,12 @@ public class newGame extends javax.swing.JPanel {
 
         lbHeroe1 = new javax.swing.JLabel();
         cbHeroe1 = new javax.swing.JComboBox<>();
-        prueba = new javax.swing.JLabel();
-        lbAnimacion = new javax.swing.JLabel();
-        hpBar1 = new javax.swing.JProgressBar();
         lbHeroe2 = new javax.swing.JLabel();
         cbHeroe2 = new javax.swing.JComboBox<>();
-        hpBar2 = new javax.swing.JProgressBar();
         lbHeroe3 = new javax.swing.JLabel();
         cbHeroe3 = new javax.swing.JComboBox<>();
-        hpBar3 = new javax.swing.JProgressBar();
         lbHeroe4 = new javax.swing.JLabel();
         cbHeroe4 = new javax.swing.JComboBox<>();
-        hpBar4 = new javax.swing.JProgressBar();
         jButton1 = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -84,7 +75,7 @@ public class newGame extends javax.swing.JPanel {
 
         lbHeroe1.setMinimumSize(new java.awt.Dimension(144, 144));
         add(lbHeroe1);
-        lbHeroe1.setBounds(0, 0, 190, 150);
+        lbHeroe1.setBounds(300, 80, 190, 150);
 
         cbHeroe1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,20 +83,11 @@ public class newGame extends javax.swing.JPanel {
             }
         });
         add(cbHeroe1);
-        cbHeroe1.setBounds(0, 200, 190, 33);
-
-        prueba.setFocusTraversalPolicyProvider(true);
-        prueba.setMinimumSize(new java.awt.Dimension(48, 48));
-        add(prueba);
-        prueba.setBounds(113, 400, 48, 48);
-        add(lbAnimacion);
-        lbAnimacion.setBounds(830, 120, 160, 130);
-        add(hpBar1);
-        hpBar1.setBounds(0, 150, 190, 30);
+        cbHeroe1.setBounds(300, 280, 190, 33);
 
         lbHeroe2.setMinimumSize(new java.awt.Dimension(144, 144));
         add(lbHeroe2);
-        lbHeroe2.setBounds(210, 0, 190, 150);
+        lbHeroe2.setBounds(510, 80, 190, 150);
 
         cbHeroe2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,13 +95,11 @@ public class newGame extends javax.swing.JPanel {
             }
         });
         add(cbHeroe2);
-        cbHeroe2.setBounds(210, 200, 190, 33);
-        add(hpBar2);
-        hpBar2.setBounds(210, 150, 190, 30);
+        cbHeroe2.setBounds(510, 280, 190, 33);
 
         lbHeroe3.setMinimumSize(new java.awt.Dimension(144, 144));
         add(lbHeroe3);
-        lbHeroe3.setBounds(420, 0, 190, 150);
+        lbHeroe3.setBounds(720, 80, 190, 150);
 
         cbHeroe3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,13 +107,11 @@ public class newGame extends javax.swing.JPanel {
             }
         });
         add(cbHeroe3);
-        cbHeroe3.setBounds(420, 200, 190, 33);
-        add(hpBar3);
-        hpBar3.setBounds(420, 150, 190, 30);
+        cbHeroe3.setBounds(720, 280, 190, 33);
 
         lbHeroe4.setMinimumSize(new java.awt.Dimension(144, 144));
         add(lbHeroe4);
-        lbHeroe4.setBounds(630, 0, 190, 150);
+        lbHeroe4.setBounds(930, 80, 190, 150);
 
         cbHeroe4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,9 +119,7 @@ public class newGame extends javax.swing.JPanel {
             }
         });
         add(cbHeroe4);
-        cbHeroe4.setBounds(630, 200, 190, 33);
-        add(hpBar4);
-        hpBar4.setBounds(630, 150, 190, 30);
+        cbHeroe4.setBounds(930, 280, 190, 33);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jButton1.setText("LINK START");
@@ -153,38 +129,8 @@ public class newGame extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(300, 430, 510, 130);
+        jButton1.setBounds(470, 410, 510, 130);
     }// </editor-fold>//GEN-END:initComponents
-
-    // Genera los movimientos del personaje que se selecciona
-    
-    private void cbHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe1ActionPerformed
-        
-        heroe1 = ArrayListed.heroes.get(cbHeroe1.getSelectedIndex());
-        lbHeroe1.setIcon(new ImageIcon(heroe1.getSprite().getCara()));
-
-        heroeSelected = ArrayListed.heroes.get(cbHeroe1.getSelectedIndex());
-
-        //heroeSelected.getKeyboard().setAnimation(new Animation("resources/Animaciones/slash3.png", lbAnimacion));
-    }//GEN-LAST:event_cbHeroe1ActionPerformed
-
-    private void cbHeroe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe2ActionPerformed
-        
-        heroe2 = ArrayListed.heroes.get(cbHeroe2.getSelectedIndex());
-        lbHeroe2.setIcon(new ImageIcon(heroe2.getSprite().getCara()));
-    }//GEN-LAST:event_cbHeroe2ActionPerformed
-
-    private void cbHeroe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe3ActionPerformed
-        
-        heroe3 = ArrayListed.heroes.get(cbHeroe3.getSelectedIndex());
-        lbHeroe3.setIcon(new ImageIcon(heroe3.getSprite().getCara()));
-    }//GEN-LAST:event_cbHeroe3ActionPerformed
-
-    private void cbHeroe4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe4ActionPerformed
-        
-        heroe4 = ArrayListed.heroes.get(cbHeroe4.getSelectedIndex());
-        lbHeroe4.setIcon(new ImageIcon(heroe4.getSprite().getCara()));
-    }//GEN-LAST:event_cbHeroe4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -193,21 +139,43 @@ public class newGame extends javax.swing.JPanel {
         Globals.Main.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cbHeroe4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe4ActionPerformed
+
+        heroe4 = ArrayListed.heroes.get(cbHeroe4.getSelectedIndex());
+        lbHeroe4.setIcon(new ImageIcon(heroe4.getSprite().getCara()));
+    }//GEN-LAST:event_cbHeroe4ActionPerformed
+
+    private void cbHeroe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe3ActionPerformed
+
+        heroe3 = ArrayListed.heroes.get(cbHeroe3.getSelectedIndex());
+        lbHeroe3.setIcon(new ImageIcon(heroe3.getSprite().getCara()));
+    }//GEN-LAST:event_cbHeroe3ActionPerformed
+
+    private void cbHeroe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe2ActionPerformed
+
+        heroe2 = ArrayListed.heroes.get(cbHeroe2.getSelectedIndex());
+        lbHeroe2.setIcon(new ImageIcon(heroe2.getSprite().getCara()));
+    }//GEN-LAST:event_cbHeroe2ActionPerformed
+
+    // Genera los movimientos del personaje que se selecciona
+    
+    private void cbHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe1ActionPerformed
+
+        heroe1 = ArrayListed.heroes.get(cbHeroe1.getSelectedIndex());
+        lbHeroe1.setIcon(new ImageIcon(heroe1.getSprite().getCara()));
+
+        //heroeSelected.getKeyboard().setAnimation(new Animation("resources/Animaciones/slash3.png", lbAnimacion));
+    }//GEN-LAST:event_cbHeroe1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbHeroe1;
     private javax.swing.JComboBox<String> cbHeroe2;
     private javax.swing.JComboBox<String> cbHeroe3;
     private javax.swing.JComboBox<String> cbHeroe4;
-    private javax.swing.JProgressBar hpBar1;
-    private javax.swing.JProgressBar hpBar2;
-    private javax.swing.JProgressBar hpBar3;
-    private javax.swing.JProgressBar hpBar4;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel lbAnimacion;
     private javax.swing.JLabel lbHeroe1;
     private javax.swing.JLabel lbHeroe2;
     private javax.swing.JLabel lbHeroe3;
     private javax.swing.JLabel lbHeroe4;
-    private static javax.swing.JLabel prueba;
     // End of variables declaration//GEN-END:variables
 }
