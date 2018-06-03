@@ -19,12 +19,15 @@ public class JMap extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         
         // Tamaño de los cuadrados (Width y Height)
+        mapa = new Mapa(1600, 704);
         int tamaño = 32;
-        mapa = new Mapa();
-        
+                
         // Posición de salida 
         int inicialX = 160;//160 (32px)//135 (33px)
         int inicialY = 188;//188 (32px)//177 (33px)
+        
+        int nX = 1;
+        int nY = 1;
 
         // Escanea el fichero con las posiciones del Mapa y los añade a la clase 'Mapa'
         try {
@@ -66,11 +69,18 @@ public class JMap extends JPanel {
 
             //Dibuja Casilla
             g2.drawImage(imgPrint, inicialX, inicialY, this);
-
+            
+            // Le da las coordenadas a la casilla (NUEVO)
+            casilla.setCoordenadas(inicialX, inicialY);
+            casilla.setPosicion(nX, nY);
+            
             // Dibuja el cuadrado
             //g2.drawRect(inicialX, inicialY, tamaño, tamaño);
             inicialX += 32;
+            System.out.println(casilla.toString());
+            
         }
+        
     }
 
     @SuppressWarnings("unchecked")

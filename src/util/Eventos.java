@@ -12,5 +12,12 @@ public class Eventos {
         heroe2.getGamePad().setGamePad(heroeFocus);
         heroe2.getKeyboard().setLabel(heroeFocus);
         heroeFocus.transferFocus();
+        
+    }
+    
+    public static void moverCasilla(Heroe heroe) {
+        
+        heroe.getMovimiento();
+        
     }
 }

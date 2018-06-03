@@ -2,10 +2,8 @@ package characters;
 
 import ch.aplu.xboxcontroller.XboxController;
 import ch.aplu.xboxcontroller.XboxControllerAdapter;
-import static ingame.Game.PanelHeroes;
 import items.Arma;
 import items.Armadura;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JLabel;

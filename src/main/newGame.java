@@ -107,7 +107,7 @@ public class newGame extends javax.swing.JPanel {
             }
         });
         add(cbHeroe3);
-        cbHeroe3.setBounds(720, 280, 190, 33);
+        cbHeroe3.setBounds(730, 280, 190, 33);
 
         lbHeroe4.setMinimumSize(new java.awt.Dimension(144, 144));
         add(lbHeroe4);
