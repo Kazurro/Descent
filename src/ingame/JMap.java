@@ -12,7 +12,7 @@ import javax.swing.*;
 
 public class JMap extends JPanel {
 
-    private Mapa mapa = null;
+    public static Mapa mapa = null;
     
     @Override public void paintComponent(Graphics g) {
         
@@ -76,7 +76,7 @@ public class JMap extends JPanel {
             g2.drawImage(imgPrint, inicialX, inicialY, this);
             
             // Le da las coordenadas a la casilla (NUEVO)
-            casilla.setCoordenadas(inicialX, inicialY);
+            casilla.setCoordenadas(inicialX - 128 + 15, inicialY - 64 + 15); // IGUAL HACE COSAS RARAS
             casilla.setPosicion(nX, nY);
             nX += 1;
             
@@ -89,7 +89,6 @@ public class JMap extends JPanel {
             System.out.println(casilla.toString());
             
         }
-        
     }
 
     @SuppressWarnings("unchecked")

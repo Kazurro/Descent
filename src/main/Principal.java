@@ -19,7 +19,6 @@ public class Principal extends javax.swing.JPanel {
             @Override public void mouseClicked(MouseEvent e) { 
                
                 Globals.getPrincipal().setVisible(false);
-                Globals.getBackground().setVisible(true);
                 Globals.Main.add(new newGame());
                 Globals.Main.repaint();
             }

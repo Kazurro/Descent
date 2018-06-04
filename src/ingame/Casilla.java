@@ -1,19 +1,66 @@
 package ingame;
 
+import characters.Personaje;
+
 public class Casilla {
 
+    private Personaje habitante;
     private boolean ocupable;
     private String tipo;
     private final int tamaño = 32;
-    private int x;
-    private int y;
-    private int nX;
-    private int nY;
+    private int x, y;
+    private int nX, nY;
 
     public Casilla(String tipo) {
         this.tipo = tipo;
     }
+    
+    // Get's y Set's
+    
+    public Personaje getHabitante(){
+        
+        return habitante;
+    }
 
+    public void setHabitante(Personaje habitante) {
+        this.habitante = habitante;
+    }
+
+    public int getnX() {
+        return nX;
+    }
+
+    public int getnY() {
+        return nY;
+    }
+
+    public int getX() {
+        return x;
+    }
+    
+    public int getY() {
+        return y;
+    }
+
+    public void setPosicion(int x, int y) {
+        this.nX = x;
+        this.nY = y;
+    }
+    
+    public void setCoordenadas(int x, int y){
+        
+        this.x = x;
+        this.y = y;
+    }
+    
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public boolean isOcupable() {
+        return ocupable;
+    }
+    
     public int[] getTipo() {
         int[] posicion = new int[2];
         
@@ -144,26 +191,6 @@ public class Casilla {
         return null;
     }
 
-    public void setPosicion(int x, int y){
-        
-        this.nX = x;
-        this.nY = y;
-    }
-    
-    public void setCoordenadas(int x, int y){
-        
-        this.x = x;
-        this.y = y;
-    }
-    
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public boolean isOcupable() {
-        return ocupable;
-    }
-    
     // To String
 
     @Override public String toString() {

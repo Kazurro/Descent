@@ -26,9 +26,9 @@ public class Game extends javax.swing.JFrame {
         
         // Carga el Mapa de fondo a FullScreen
         this.add(jMap);
-        this.add(jF);
+        //this.add(jF);
         jMap.setBounds(Globals.location);
-        jF.setBounds(Globals.location);
+        //jF.setBounds(Globals.location);
         
         // Asigna los heroes seleccionados a sus respectivas JLabel
         this.heroe1 = heroe1;
