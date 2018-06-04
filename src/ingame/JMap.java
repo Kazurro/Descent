@@ -63,9 +63,11 @@ public class JMap extends JPanel {
             if (inicialX >= mapa.getTamañoX() + 160) {
                 inicialX = 160;
                 inicialY += 32;
+                nX = 1;
+                nY += 1;
             }
             // Color a la rejilla del cuadrado (AZUL)
-            //g2.setColor(new Color(0, 153, 255, 1));
+            g2.setColor(Color.red);
 
             //Dibuja Casilla
             g2.drawImage(imgPrint, inicialX, inicialY, this);
@@ -73,6 +75,7 @@ public class JMap extends JPanel {
             // Le da las coordenadas a la casilla (NUEVO)
             casilla.setCoordenadas(inicialX, inicialY);
             casilla.setPosicion(nX, nY);
+            nX += 1;
             
             // Dibuja el cuadrado
             //g2.drawRect(inicialX, inicialY, tamaño, tamaño);

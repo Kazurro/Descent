@@ -30,6 +30,4 @@ public class Mapa {
     public int getTamañoY() {
         return tamañoY;
     }
-
-    
 }

@@ -29,9 +29,7 @@ public class PanelFondo extends javax.swing.JPanel {
 
         try {
             imagen = ImageIO.read(new File("resources/2.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(OvalPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (IOException ex) {}
 
         BufferedImage img = imagen.getSubimage(265, 32, 32, 32);
         do {
