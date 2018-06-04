@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import util.ConexionBBDD;
 
 public class newGame extends javax.swing.JPanel {
-    
-    private ConexionBBDD conexion; 
+
+    private ConexionBBDD conexion;
     private Heroe heroe1;
     private Heroe heroe2;
     private Heroe heroe3;
@@ -23,9 +23,8 @@ public class newGame extends javax.swing.JPanel {
         initComponents();
         Globals.setGame(this);
         this.setBounds(Globals.location);
-        
+
         // Genero una nueva conexión
-        
         try {
             conexion = new ConexionBBDD("BBDD.db");
             conexion.cargarHeroes();
@@ -33,10 +32,10 @@ public class newGame extends javax.swing.JPanel {
             setupComboBox(cbHeroe2);
             setupComboBox(cbHeroe3);
             setupComboBox(cbHeroe4);
-        } catch (SQLException ex) {}
-        
+        } catch (SQLException ex) {
+        }
+
         // Carga el fondo de selección de Heroe
-        
         Globals.getBackground().setVisible(false);
         this.add(Globals.addBackground(new JLabel()));
         Globals.setBackground(Globals.fullScreen, "resources/background2.jpg");
@@ -44,18 +43,18 @@ public class newGame extends javax.swing.JPanel {
     }
 
     // Carga los heroes en el ComboBox
-    
-    public static void setupComboBox(JComboBox seleccion){
-        
+    public static void setupComboBox(JComboBox seleccion) {
+
         ArrayList<String> selHeroes = new ArrayList<>();
         
         ArrayListed.heroes.forEach((heroe) -> {
             selHeroes.add(heroe.getNombre());
+           
         });
-        
+
         seleccion.setModel(new DefaultComboBoxModel(selHeroes.toArray()));
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -135,32 +134,45 @@ public class newGame extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         Game game = new Game(heroe1, heroe2, heroe3, heroe4);
-        game.setVisible(true);     
+        game.setVisible(true);
         Globals.Main.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbHeroe4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe4ActionPerformed
-
+        newGame.this.setupComboBox(cbHeroe1);
+        newGame.this.setupComboBox(cbHeroe2);
+        newGame.this.setupComboBox(cbHeroe3);
+        cbHeroe4.setEnabled(false);
         heroe4 = ArrayListed.heroes.get(cbHeroe4.getSelectedIndex());
         lbHeroe4.setIcon(new ImageIcon(heroe4.getSprite().getCara()));
+
     }//GEN-LAST:event_cbHeroe4ActionPerformed
 
     private void cbHeroe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe3ActionPerformed
-
+        newGame.this.setupComboBox(cbHeroe1);
+        newGame.this.setupComboBox(cbHeroe2);
+        newGame.this.setupComboBox(cbHeroe4);
+        cbHeroe3.setEnabled(false);
         heroe3 = ArrayListed.heroes.get(cbHeroe3.getSelectedIndex());
         lbHeroe3.setIcon(new ImageIcon(heroe3.getSprite().getCara()));
     }//GEN-LAST:event_cbHeroe3ActionPerformed
 
     private void cbHeroe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe2ActionPerformed
-
+        newGame.this.setupComboBox(cbHeroe1);
+        newGame.this.setupComboBox(cbHeroe4);
+        newGame.this.setupComboBox(cbHeroe3);
+        cbHeroe2.setEnabled(false);
         heroe2 = ArrayListed.heroes.get(cbHeroe2.getSelectedIndex());
         lbHeroe2.setIcon(new ImageIcon(heroe2.getSprite().getCara()));
     }//GEN-LAST:event_cbHeroe2ActionPerformed
 
     // Genera los movimientos del personaje que se selecciona
-    
-    private void cbHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe1ActionPerformed
 
+    private void cbHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe1ActionPerformed
+        newGame.this.setupComboBox(cbHeroe4);
+        newGame.this.setupComboBox(cbHeroe2);
+        newGame.this.setupComboBox(cbHeroe3);
+        cbHeroe1.setEnabled(false);
         heroe1 = ArrayListed.heroes.get(cbHeroe1.getSelectedIndex());
         lbHeroe1.setIcon(new ImageIcon(heroe1.getSprite().getCara()));
 
