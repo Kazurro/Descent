@@ -1,20 +1,33 @@
 package ingame;
 
+import characters.ArrayListed;
+import characters.Monstruo;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import util.ConexionBBDD;
 
 public class JMap extends JPanel {
 
-    public static Mapa mapa = null;
+    public JMap(JLabel label) {
+        initComponents();
+        this.label=label;
+    }
     
+    private JLabel label;
+    private ConexionBBDD conexion;
+    public static Mapa mapa = null;
+    private static Monstruo boss;
     // Array que almacena casillas ocupadas    
     public static ArrayList<Casilla> caOcupadas = new ArrayList();
 
@@ -104,6 +117,14 @@ public class JMap extends JPanel {
             System.out.println(casilla.toString());
 
         }
+        try {
+            conexion = new ConexionBBDD("BBDD.db");
+            conexion.cargarMounstros();
+        } catch (SQLException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        boss = ArrayListed.monstruos.get(0);
+        boss.numRandom(label);
     }
 
     @SuppressWarnings("unchecked")

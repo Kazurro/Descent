@@ -1,6 +1,7 @@
 package util;
 
 import characters.Heroe;
+import characters.Monstruo;
 import characters.Sprite;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -47,6 +48,20 @@ public class ConexionBBDD {
             while(consulta.next()){
                 
                 new Heroe(consulta.getString(2), new Sprite(consulta.getString(3)),
+                            consulta.getInt(4), consulta.getInt(5), consulta.getInt(6),
+                            consulta.getInt(7), consulta.getInt(8));
+            }
+        } catch (SQLException ex) {}
+    }
+        
+    public void cargarMounstros(){
+        
+        this.Query(1, "MONSTRUO", "");
+        
+        try {
+            while(consulta.next()){
+                
+                new Monstruo(consulta.getString(2), new Sprite(consulta.getString(3)),
                             consulta.getInt(4), consulta.getInt(5), consulta.getInt(6),
                             consulta.getInt(7), consulta.getInt(8));
             }

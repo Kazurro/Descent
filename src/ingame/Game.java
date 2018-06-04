@@ -1,10 +1,16 @@
 package ingame;
 
-import characters.Heroe;
+import characters.*;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.Globals;
+import util.ConexionBBDD;
 import util.Eventos;
 
 public class Game extends javax.swing.JFrame {
+    
 
     private static Heroe heroe1;
     private static Heroe heroe2;
@@ -12,12 +18,18 @@ public class Game extends javax.swing.JFrame {
     private static Heroe heroe4;
     private static int turno = 1;
     
+   
+    
     // Paneles que generan el Mapa y sus Casillas
-    private final JMap jMap = new JMap();
+    private final JMap jMap;
     private final PanelFondo jF = new PanelFondo();
     
     public Game(Heroe heroe1, Heroe heroe2, Heroe heroe3, Heroe heroe4) {
         initComponents();
+        jMap = new JMap(lbBoss);
+       
+         
+           
         
         // Carga el Frame a FullScreen
         this.setSize(Globals.fullScreen);
@@ -39,6 +51,8 @@ public class Game extends javax.swing.JFrame {
         // Asigna el primer turno al Heroe 1
         heroe1.getKeyboard().setLabel(lbHeroe1);
         heroe1.getGamePad().setGamePad(lbHeroe1);
+        
+       
     }
 
     @SuppressWarnings("unchecked")
@@ -51,6 +65,7 @@ public class Game extends javax.swing.JFrame {
         lbHeroe2 = new javax.swing.JLabel();
         lbHeroe1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        lbBoss = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -79,6 +94,8 @@ public class Game extends javax.swing.JFrame {
 
         getContentPane().add(PanelHeroes);
         PanelHeroes.setBounds(110, 10, 1010, 450);
+        getContentPane().add(lbBoss);
+        lbBoss.setBounds(10, 10, 70, 80);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -105,6 +122,7 @@ public class Game extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JPanel PanelHeroes;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel lbBoss;
     private javax.swing.JLabel lbHeroe1;
     private javax.swing.JLabel lbHeroe2;
     private javax.swing.JLabel lbHeroe3;

@@ -33,6 +33,7 @@ public class newGame extends javax.swing.JPanel {
         try {
             conexion = new ConexionBBDD("BBDD.db");
             conexion.cargarHeroes();
+            
             setupComboBox(cbHeroe1);
             setupComboBox(cbHeroe2);
             setupComboBox(cbHeroe3);

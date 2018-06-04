@@ -97,22 +97,7 @@ public class Heroe extends Personaje {
     public class Keyboard implements KeyListener {
 
         private Animation animacion;
-        private JLabel label;
-
-        // Metodo que genera un número aleatorio comprendido entre 1 y el número máximo de casillas ocupadas.
-        public void numRandom() {
-            
-            int valorEntero = (int) Math.floor(Math.random() * (1 - 592 + 1) + 592);
-            // System.out.println("Casillas ocupasdas" + JMap.caOcupadas.size());
-            for (Casilla casilla : JMap.caOcupadas) {
-
-                if (casilla.getNumcasilla() == valorEntero) {
-                    moverCasilla(casilla.getnX(), casilla.getnY());
-                   label.setText("hola");
-                }
-
-            }
-        }
+        private JLabel label;      
 
         // Asigna el JLabel en el que se generara el Heroe para administrar sus movimientos
         public Keyboard() {
@@ -145,7 +130,7 @@ public class Heroe extends Personaje {
         @Override
         public void keyTyped(KeyEvent e) {
             Globals.Partida.repaint();
-            //numRandom();
+         
             
             switch (KeyEvent.getKeyText(e.getKeyCode())) {
                 case "Arriba":
@@ -180,7 +165,7 @@ public class Heroe extends Personaje {
         public void keyPressed(KeyEvent e) {
             Globals.Partida.repaint();
             
-            //numRandom();
+           
             switch (KeyEvent.getKeyText(e.getKeyCode())) {
                 case "Arriba":
                     moverCasilla(nX, nY - 1);
