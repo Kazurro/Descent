@@ -54,7 +54,7 @@ public class Casilla {
             
         } else if (tipo.contains("B")){ // Borde (Centro, ..., ...)
             
-            ocupable = true;
+            ocupable = false;
             
             switch(tipo){
                 case "B0":
@@ -158,6 +158,10 @@ public class Casilla {
     
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public boolean isOcupable() {
+        return ocupable;
     }
     
     // To String

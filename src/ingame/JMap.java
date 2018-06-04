@@ -67,7 +67,10 @@ public class JMap extends JPanel {
                 nY += 1;
             }
             // Color a la rejilla del cuadrado (AZUL)
-            g2.setColor(Color.red);
+            if (casilla.isOcupable() == true){
+                g2.setColor(Color.red); 
+            }
+           
 
             //Dibuja Casilla
             g2.drawImage(imgPrint, inicialX, inicialY, this);
@@ -78,7 +81,10 @@ public class JMap extends JPanel {
             nX += 1;
             
             // Dibuja el cuadrado
-            //g2.drawRect(inicialX, inicialY, tamaño, tamaño);
+            if (casilla.isOcupable() == true){
+                g2.drawRect(inicialX, inicialY, tamaño, tamaño);
+            }
+            
             inicialX += 32;
             System.out.println(casilla.toString());
             
