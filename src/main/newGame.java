@@ -3,6 +3,8 @@ package main;
 import characters.ArrayListed;
 import characters.Heroe;
 import ingame.Game;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -24,6 +26,9 @@ public class newGame extends javax.swing.JPanel {
         Globals.setGame(this);
         this.setBounds(Globals.location);
 
+        // Posición del botón Volver
+        lbReturn.setBounds(Globals.location.width - 200, Globals.location.height - 200, 110, 60);
+
         // Genero una nueva conexión
         try {
             conexion = new ConexionBBDD("BBDD.db");
@@ -40,25 +45,50 @@ public class newGame extends javax.swing.JPanel {
         this.add(Globals.addBackground(new JLabel()));
         Globals.setBackground(Globals.fullScreen, "resources/background2.jpg");
         Globals.getBackground().setVisible(true);
+
+        // Botón Volver
+        lbReturn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                newGame.this.setVisible(false);
+                Globals.Main.add(new Principal());
+                Globals.Main.add(Globals.addBackground(new JLabel()));
+                Globals.setBackground(Globals.fullScreen, "resources/background1.jpg");
+                Globals.Main.repaint();
+
+            }
+        });
+
     }
+
+    static ArrayList<String> relHeroes = new ArrayList<>();
 
     // Carga los heroes en el ComboBox
     public static void setupComboBox(JComboBox seleccion) {
 
         ArrayList<String> selHeroes = new ArrayList<>();
-        
+
         ArrayListed.heroes.forEach((heroe) -> {
             selHeroes.add(heroe.getNombre());
-           
+
         });
 
+        relHeroes = selHeroes;
         seleccion.setModel(new DefaultComboBoxModel(selHeroes.toArray()));
+    }
+
+    //Recarga los heroes del ComboBox
+    public static void reCB(JComboBox seleccion) {
+
+        seleccion.setModel(new DefaultComboBoxModel(relHeroes.toArray()));
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbReturn = new javax.swing.JLabel();
         lbHeroe1 = new javax.swing.JLabel();
         cbHeroe1 = new javax.swing.JComboBox<>();
         lbHeroe2 = new javax.swing.JLabel();
@@ -71,6 +101,14 @@ public class newGame extends javax.swing.JPanel {
 
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setLayout(null);
+
+        lbReturn.setBackground(new java.awt.Color(255, 255, 255));
+        lbReturn.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
+        lbReturn.setForeground(new java.awt.Color(255, 255, 255));
+        lbReturn.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbReturn.setText("Volver");
+        add(lbReturn);
+        lbReturn.setBounds(1150, 640, 110, 51);
 
         lbHeroe1.setMinimumSize(new java.awt.Dimension(144, 144));
         add(lbHeroe1);
@@ -139,45 +177,53 @@ public class newGame extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbHeroe4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe4ActionPerformed
-        newGame.this.setupComboBox(cbHeroe1);
-        newGame.this.setupComboBox(cbHeroe2);
-        newGame.this.setupComboBox(cbHeroe3);
         cbHeroe4.setEnabled(false);
         heroe4 = ArrayListed.heroes.get(cbHeroe4.getSelectedIndex());
         lbHeroe4.setIcon(new ImageIcon(heroe4.getSprite().getCara()));
 
+        // Funcion para remover un heroe y recargar las tablas
+        relHeroes.remove(cbHeroe4.getSelectedIndex());
+        newGame.reCB(cbHeroe1);
+        newGame.reCB(cbHeroe2);
+        newGame.reCB(cbHeroe3);
     }//GEN-LAST:event_cbHeroe4ActionPerformed
 
     private void cbHeroe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe3ActionPerformed
-        newGame.this.setupComboBox(cbHeroe1);
-        newGame.this.setupComboBox(cbHeroe2);
-        newGame.this.setupComboBox(cbHeroe4);
+
         cbHeroe3.setEnabled(false);
         heroe3 = ArrayListed.heroes.get(cbHeroe3.getSelectedIndex());
         lbHeroe3.setIcon(new ImageIcon(heroe3.getSprite().getCara()));
+        relHeroes.remove(cbHeroe3.getSelectedIndex());
+        newGame.reCB(cbHeroe1);
+        newGame.reCB(cbHeroe2);
+        newGame.reCB(cbHeroe4);
     }//GEN-LAST:event_cbHeroe3ActionPerformed
 
     private void cbHeroe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe2ActionPerformed
-        newGame.this.setupComboBox(cbHeroe1);
-        newGame.this.setupComboBox(cbHeroe4);
-        newGame.this.setupComboBox(cbHeroe3);
+
         cbHeroe2.setEnabled(false);
         heroe2 = ArrayListed.heroes.get(cbHeroe2.getSelectedIndex());
         lbHeroe2.setIcon(new ImageIcon(heroe2.getSprite().getCara()));
+        relHeroes.remove(cbHeroe2.getSelectedIndex());
+        newGame.reCB(cbHeroe1);
+        newGame.reCB(cbHeroe4);
+        newGame.reCB(cbHeroe3);
     }//GEN-LAST:event_cbHeroe2ActionPerformed
 
     // Genera los movimientos del personaje que se selecciona
 
     private void cbHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe1ActionPerformed
-        newGame.this.setupComboBox(cbHeroe4);
-        newGame.this.setupComboBox(cbHeroe2);
-        newGame.this.setupComboBox(cbHeroe3);
+
         cbHeroe1.setEnabled(false);
         heroe1 = ArrayListed.heroes.get(cbHeroe1.getSelectedIndex());
         lbHeroe1.setIcon(new ImageIcon(heroe1.getSprite().getCara()));
-
+        relHeroes.remove(cbHeroe1.getSelectedIndex());
+        newGame.reCB(cbHeroe4);
+        newGame.reCB(cbHeroe2);
+        newGame.reCB(cbHeroe3);
         //heroeSelected.getKeyboard().setAnimation(new Animation("resources/Animaciones/slash3.png", lbAnimacion));
     }//GEN-LAST:event_cbHeroe1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbHeroe1;
@@ -189,5 +235,6 @@ public class newGame extends javax.swing.JPanel {
     private javax.swing.JLabel lbHeroe2;
     private javax.swing.JLabel lbHeroe3;
     private javax.swing.JLabel lbHeroe4;
+    private javax.swing.JLabel lbReturn;
     // End of variables declaration//GEN-END:variables
 }

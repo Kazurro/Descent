@@ -10,7 +10,9 @@ public class Casilla {
     private final int tamaño = 32;
     private int x, y;
     private int nX, nY;
-
+    
+    private int numcasilla;
+    
     public Casilla(String tipo) {
         this.tipo = tipo;
     }
@@ -20,6 +22,14 @@ public class Casilla {
     public Personaje getHabitante(){
         
         return habitante;
+    }
+
+    public int getNumcasilla() {
+        return numcasilla;
+    }
+
+    public void setNumcasilla(int numcasilla) {
+        this.numcasilla = numcasilla;
     }
 
     public void setHabitante(Personaje habitante) {
