@@ -145,7 +145,8 @@ public class Heroe extends Personaje {
         @Override
         public void keyTyped(KeyEvent e) {
             Globals.Partida.repaint();
-numRandom();
+            //numRandom();
+            
             switch (KeyEvent.getKeyText(e.getKeyCode())) {
                 case "Arriba":
                     moverCasilla(nX, nY - 1);
@@ -179,8 +180,7 @@ numRandom();
         public void keyPressed(KeyEvent e) {
             Globals.Partida.repaint();
             
-numRandom();
-
+            //numRandom();
             switch (KeyEvent.getKeyText(e.getKeyCode())) {
                 case "Arriba":
                     moverCasilla(nX, nY - 1);
@@ -210,9 +210,7 @@ numRandom();
             label.repaint();
         }
 
-        @Override
-        public void keyReleased(KeyEvent e) {
-        }
+        @Override public void keyReleased(KeyEvent e) {}
     }
 
     // Clase Interna del Heroe que permite su movimiento y animación con mando de XBox

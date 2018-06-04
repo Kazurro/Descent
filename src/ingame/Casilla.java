@@ -207,7 +207,4 @@ public class Casilla {
         
         return "Casilla{" + "ocupable=" + ocupable + ", tipo=" + tipo + ", tama\u00f1o=" + tamaño + ", x=" + x + ", y=" + y + ", nX=" + nX + ", nY=" + nY + '}';
     }
-    
-    
-
 }

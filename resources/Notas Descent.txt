@@ -18,7 +18,7 @@ Primera Pantalla {
 }
 
 Partida nueva {
-	- Breve explicación y inicia juego
+	- Seleccion de heroes y empieza partida.
 }
 
 Repetición {}

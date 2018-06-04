@@ -48,40 +48,43 @@ public class newGame extends javax.swing.JPanel {
 
         // Botón Volver
         lbReturn.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
+            
+            @Override public void mouseClicked(MouseEvent e) {
 
                 newGame.this.setVisible(false);
-                Globals.Main.add(new Principal());
+                Globals.getPrincipal().setVisible(true);
                 Globals.Main.add(Globals.addBackground(new JLabel()));
                 Globals.setBackground(Globals.fullScreen, "resources/background1.jpg");
                 Globals.Main.repaint();
-
             }
         });
 
     }
 
-    static ArrayList<String> relHeroes = new ArrayList<>();
-
+    static ArrayList<Heroe> relHeroes = new ArrayList<>();
+    static ArrayList<String> selHeroes = new ArrayList<>();
     // Carga los heroes en el ComboBox
     public static void setupComboBox(JComboBox seleccion) {
-
-        ArrayList<String> selHeroes = new ArrayList<>();
-
+        
         ArrayListed.heroes.forEach((heroe) -> {
             selHeroes.add(heroe.getNombre());
 
         });
 
-        relHeroes = selHeroes;
+        relHeroes = ArrayListed.heroes;
         seleccion.setModel(new DefaultComboBoxModel(selHeroes.toArray()));
     }
 
     //Recarga los heroes del ComboBox
     public static void reCB(JComboBox seleccion) {
+        selHeroes.clear();
+        
+        relHeroes.forEach((heroe) -> {
+            selHeroes.add(heroe.getNombre());
 
-        seleccion.setModel(new DefaultComboBoxModel(relHeroes.toArray()));
+        });
+        
+        seleccion.setModel(new DefaultComboBoxModel(selHeroes.toArray()));
     }
 
     @SuppressWarnings("unchecked")
@@ -178,7 +181,7 @@ public class newGame extends javax.swing.JPanel {
 
     private void cbHeroe4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe4ActionPerformed
         cbHeroe4.setEnabled(false);
-        heroe4 = ArrayListed.heroes.get(cbHeroe4.getSelectedIndex());
+        heroe4 = relHeroes.get(cbHeroe4.getSelectedIndex());
         lbHeroe4.setIcon(new ImageIcon(heroe4.getSprite().getCara()));
 
         // Funcion para remover un heroe y recargar las tablas
@@ -191,7 +194,7 @@ public class newGame extends javax.swing.JPanel {
     private void cbHeroe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe3ActionPerformed
 
         cbHeroe3.setEnabled(false);
-        heroe3 = ArrayListed.heroes.get(cbHeroe3.getSelectedIndex());
+        heroe3 = relHeroes.get(cbHeroe3.getSelectedIndex());
         lbHeroe3.setIcon(new ImageIcon(heroe3.getSprite().getCara()));
         relHeroes.remove(cbHeroe3.getSelectedIndex());
         newGame.reCB(cbHeroe1);
@@ -202,7 +205,7 @@ public class newGame extends javax.swing.JPanel {
     private void cbHeroe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe2ActionPerformed
 
         cbHeroe2.setEnabled(false);
-        heroe2 = ArrayListed.heroes.get(cbHeroe2.getSelectedIndex());
+        heroe2 = relHeroes.get(cbHeroe2.getSelectedIndex());
         lbHeroe2.setIcon(new ImageIcon(heroe2.getSprite().getCara()));
         relHeroes.remove(cbHeroe2.getSelectedIndex());
         newGame.reCB(cbHeroe1);
@@ -215,7 +218,7 @@ public class newGame extends javax.swing.JPanel {
     private void cbHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe1ActionPerformed
 
         cbHeroe1.setEnabled(false);
-        heroe1 = ArrayListed.heroes.get(cbHeroe1.getSelectedIndex());
+        heroe1 = relHeroes.get(cbHeroe1.getSelectedIndex());
         lbHeroe1.setIcon(new ImageIcon(heroe1.getSprite().getCara()));
         relHeroes.remove(cbHeroe1.getSelectedIndex());
         newGame.reCB(cbHeroe4);
