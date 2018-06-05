@@ -1,18 +1,14 @@
 package ingame;
 
-import characters.ArrayListed;
 import characters.Monstruo;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import util.ConexionBBDD;
@@ -39,10 +35,6 @@ public class JMap extends JPanel {
         // Tamaño de los cuadrados (Width y Height)
         mapa = new Mapa(1600, 704);
         int tamaño = 32;
-
-        // Posición de salida 
-        int inicialX = 160;//160 (32px)//135 (33px)
-        int inicialY = 188;//188 (32px)//177 (33px)
 
         int nX = 1;
         int nY = 1;
@@ -84,9 +76,9 @@ public class JMap extends JPanel {
             Casilla casilla = it.next();
             BufferedImage imgPrint = imgTerreno.getSubimage(casilla.getTipo()[0], casilla.getTipo()[1], tamaño, tamaño);
 
-            if (inicialX >= mapa.getTamañoX() + 160) {
-                inicialX = 160;
-                inicialY += 32;
+            if (mapa.getIniX() >= mapa.getTamañoX() + 160) {
+                mapa.setIniX(160);
+                mapa.setIniY(mapa.getIniY() + tamaño);
                 nX = 1;
                 nY += 1;
             }
@@ -101,19 +93,19 @@ public class JMap extends JPanel {
             }
 
             //Dibuja Casilla
-            g2.drawImage(imgPrint, inicialX, inicialY, this);
+            g2.drawImage(imgPrint, mapa.getIniX(), mapa.getIniY(), this);
 
             // Le da las coordenadas a la casilla (NUEVO)
-            casilla.setCoordenadas(inicialX - 128 + 15, inicialY - 64 + 15); // IGUAL HACE COSAS RARAS
+            casilla.setCoordenadas(mapa.getIniX() - 128 + 15, mapa.getIniY() - 64 + 15); // IGUAL HACE COSAS RARAS
             casilla.setPosicion(nX, nY);
             nX += 1;
 
             // Dibuja el cuadrado
             if (casilla.isOcupable() == true) {
-                g2.drawRect(inicialX, inicialY, tamaño, tamaño);
+                g2.drawRect(mapa.getIniX(), mapa.getIniY(), tamaño, tamaño);
             }
 
-            inicialX += 32;
+            mapa.setIniX(mapa.getIniX() + tamaño);
             System.out.println(casilla.toString());
 
         }

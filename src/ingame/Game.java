@@ -1,12 +1,7 @@
 package ingame;
 
 import characters.*;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import main.Globals;
-import util.ConexionBBDD;
 import util.Eventos;
 
 public class Game extends javax.swing.JFrame {

@@ -176,7 +176,7 @@ public class newGame extends javax.swing.JPanel {
         cbHeroe4.setBounds(930, 280, 190, 33);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jButton1.setText("LINK START");
+        jButton1.setText("INICIAR PARTIDA");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
