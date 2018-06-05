@@ -21,11 +21,19 @@ public class newGame extends javax.swing.JPanel {
     private Heroe heroe3;
     private Heroe heroe4;
 
+    // ArrayList con los que trabajamos
+    static ArrayList<Heroe> relHeroes = new ArrayList<>();
+    static ArrayList<String> selHeroes = new ArrayList<>();
+    
     public newGame() {
         initComponents();
         Globals.setGame(this);
         this.setBounds(Globals.location);
 
+        // Limpia los ArrayList
+        relHeroes.clear();
+        selHeroes.clear();
+        
         // Posición del botón Volver
         lbReturn.setBounds(Globals.location.width - 200, Globals.location.height - 200, 110, 60);
 
@@ -59,13 +67,18 @@ public class newGame extends javax.swing.JPanel {
                 Globals.Main.repaint();
             }
         });
-
+        
+        cbHeroe2.setVisible(false);
+        cbHeroe3.setVisible(false);
+        cbHeroe4.setVisible(false);
+        lbHeroe2.setVisible(false);
+        lbHeroe3.setVisible(false);
+        lbHeroe4.setVisible(false);
     }
 
-    static ArrayList<Heroe> relHeroes = new ArrayList<>();
-    static ArrayList<String> selHeroes = new ArrayList<>();
     // Carga los heroes en el ComboBox
     public static void setupComboBox(JComboBox seleccion) {
+        selHeroes.clear();
         
         ArrayListed.heroes.forEach((heroe) -> {
             selHeroes.add(heroe.getNombre());
@@ -181,51 +194,43 @@ public class newGame extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbHeroe4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe4ActionPerformed
-        cbHeroe4.setEnabled(false);
+        
         heroe4 = relHeroes.get(cbHeroe4.getSelectedIndex());
         lbHeroe4.setIcon(new ImageIcon(heroe4.getSprite().getCara()));
-
-        // Funcion para remover un heroe y recargar las tablas
         relHeroes.remove(cbHeroe4.getSelectedIndex());
-        newGame.reCB(cbHeroe1);
-        newGame.reCB(cbHeroe2);
-        newGame.reCB(cbHeroe3);
+        cbHeroe4.setEnabled(false);
     }//GEN-LAST:event_cbHeroe4ActionPerformed
 
     private void cbHeroe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe3ActionPerformed
 
-        cbHeroe3.setEnabled(false);
         heroe3 = relHeroes.get(cbHeroe3.getSelectedIndex());
         lbHeroe3.setIcon(new ImageIcon(heroe3.getSprite().getCara()));
         relHeroes.remove(cbHeroe3.getSelectedIndex());
-        newGame.reCB(cbHeroe1);
-        newGame.reCB(cbHeroe2);
-        newGame.reCB(cbHeroe4);
+        cbHeroe3.setEnabled(false);
+        reCB(cbHeroe4);
+        cbHeroe4.setVisible(true);
+        lbHeroe4.setVisible(true);
     }//GEN-LAST:event_cbHeroe3ActionPerformed
 
     private void cbHeroe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe2ActionPerformed
-
-        cbHeroe2.setEnabled(false);
         heroe2 = relHeroes.get(cbHeroe2.getSelectedIndex());
         lbHeroe2.setIcon(new ImageIcon(heroe2.getSprite().getCara()));
         relHeroes.remove(cbHeroe2.getSelectedIndex());
-        newGame.reCB(cbHeroe1);
-        newGame.reCB(cbHeroe4);
-        newGame.reCB(cbHeroe3);
+        cbHeroe2.setEnabled(false);
+        reCB(cbHeroe3);
+        cbHeroe3.setVisible(true);
+        lbHeroe3.setVisible(true);
     }//GEN-LAST:event_cbHeroe2ActionPerformed
 
-    // Genera los movimientos del personaje que se selecciona
-
     private void cbHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHeroe1ActionPerformed
-
-        cbHeroe1.setEnabled(false);
+        
         heroe1 = relHeroes.get(cbHeroe1.getSelectedIndex());
         lbHeroe1.setIcon(new ImageIcon(heroe1.getSprite().getCara()));
         relHeroes.remove(cbHeroe1.getSelectedIndex());
-        newGame.reCB(cbHeroe4);
-        newGame.reCB(cbHeroe2);
-        newGame.reCB(cbHeroe3);
-        //heroeSelected.getKeyboard().setAnimation(new Animation("resources/Animaciones/slash3.png", lbAnimacion));
+        cbHeroe1.setEnabled(false);
+        reCB(cbHeroe2);
+        cbHeroe2.setVisible(true);
+        lbHeroe2.setVisible(true);
     }//GEN-LAST:event_cbHeroe1ActionPerformed
 
 

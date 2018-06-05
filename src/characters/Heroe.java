@@ -96,18 +96,13 @@ public class Heroe extends Personaje {
     // Clase Interna del Heroe que permite su movimiento y animación
     public class Keyboard implements KeyListener {
 
-        private Animation animacion;
         private JLabel label;      
 
         // Asigna el JLabel en el que se generara el Heroe para administrar sus movimientos
         public Keyboard() {
-
-            // Casilla de Salida del Heroe
+            
             nY = 8;
             nX = 4;
-            //x = 396;
-            //y = 207;
-            
         }
 
         public void setLabel(JLabel label) {
@@ -117,20 +112,13 @@ public class Heroe extends Personaje {
             Globals.Partida.setFocusable(true);
         }
 
-        public void setAnimation(Animation animacion) {
-
-            this.animacion = animacion;
-        }
-
         public void transferListener() {
             contador = 0;
             Globals.Partida.removeKeyListener(Keyboard.this);
         }
 
-        @Override
-        public void keyTyped(KeyEvent e) {
+        @Override public void keyTyped(KeyEvent e) {
             Globals.Partida.repaint();
-         
             
             switch (KeyEvent.getKeyText(e.getKeyCode())) {
                 case "Arriba":
@@ -148,9 +136,6 @@ public class Heroe extends Personaje {
                 case "Izquierda":
                     moverCasilla(nX - 1, nY);
                     label.setIcon(getSprite().getLeftAnimation());
-                    break;
-                case "R":
-                    animacion.startAnimation();
                     break;
                 default:
                     moverCasilla(nX, nY);
@@ -161,11 +146,9 @@ public class Heroe extends Personaje {
             label.repaint();
         }
 
-        @Override
-        public void keyPressed(KeyEvent e) {
+        @Override public void keyPressed(KeyEvent e) {
             Globals.Partida.repaint();
             
-           
             switch (KeyEvent.getKeyText(e.getKeyCode())) {
                 case "Arriba":
                     moverCasilla(nX, nY - 1);
@@ -182,9 +165,6 @@ public class Heroe extends Personaje {
                 case "Izquierda":
                     moverCasilla(nX - 1, nY);
                     label.setIcon(getSprite().getLeftAnimation());
-                    break;
-                case "R":
-                    animacion.startAnimation();
                     break;
                 default:
                     moverCasilla(nX, nY);
@@ -216,8 +196,7 @@ public class Heroe extends Personaje {
         public void setGamePad(JLabel label) {
 
             xc.addXboxControllerListener(new XboxControllerAdapter() {
-                @Override
-                public void isConnected(boolean connected) {
+                @Override public void isConnected(boolean connected) {
 
                     if (!connected) {
 
@@ -227,36 +206,31 @@ public class Heroe extends Personaje {
                 }
 
                 // Pad Cuadriculado
-                @Override
-                public void dpad(int direction, boolean pressed) {
+                @Override public void dpad(int direction, boolean pressed) {
 
                     Globals.Partida.repaint();
 
                     switch (direction) {
                         case 0:
-                            y -= 10;
+                            moverCasilla(nX, nY - 1);
                             label.setIcon(getSprite().getTopAnimation());
                             break;
-                        case 1:
-                            break;
+                        case 1: break;
                         case 2:
-                            x += 10;
+                            moverCasilla(nX + 1, nY);
                             label.setIcon(getSprite().getRightAnimation());
                             break;
-                        case 3:
-                            break;
+                        case 3: break;
                         case 4:
-                            y += 10;
+                            moverCasilla(nX, nY + 1);
                             label.setIcon(getSprite().getBottomAnimation());
                             break;
-                        case 5:
-                            break;
+                        case 5: break;
                         case 6:
-                            x -= 10;
+                            moverCasilla(nX - 1, nY);
                             label.setIcon(getSprite().getLeftAnimation());
                             break;
-                        case 7:
-                            break;
+                        case 7: break;
                     }
 
                     label.setLocation(x, y);
@@ -264,22 +238,20 @@ public class Heroe extends Personaje {
                 }
 
                 // Thumb Izquierdo
-                @Override
-                public void leftThumbDirection(double direction) {
-
+                @Override public void leftThumbDirection(double direction) {
                     Globals.Partida.repaint();
 
                     if (direction > 315 && direction < 360 || direction > 0 && direction < 45) {
-                        y -= 10;
+                        moverCasilla(nX, nY - 1);
                         label.setIcon(getSprite().getTopAnimation());
                     } else if (direction > 45 && direction < 135) {
-                        x += 10;
+                        moverCasilla(nX + 1, nY);
                         label.setIcon(getSprite().getRightAnimation());
                     } else if (direction > 135 && direction < 225) {
-                        y += 10;
+                        moverCasilla(nX, nY + 1);
                         label.setIcon(getSprite().getBottomAnimation());
                     } else if (direction > 225 && direction < 315) {
-                        x -= 10;
+                        moverCasilla(nX - 1, nY);
                         label.setIcon(getSprite().getLeftAnimation());
                     }
 

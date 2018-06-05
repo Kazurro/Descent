@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 
 public class Eventos {
     
+    // Gestiona el turno de turno (Heroe actual, Heroe siguiente, JLabel de heroe siguiente)
+    
     public static void pasarTurno(Heroe heroe1, Heroe heroe2, JLabel heroeFocus) {
         
         heroe1.getKeyboard().transferListener();

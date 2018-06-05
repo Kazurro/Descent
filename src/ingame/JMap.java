@@ -117,14 +117,6 @@ public class JMap extends JPanel {
             System.out.println(casilla.toString());
 
         }
-        try {
-            conexion = new ConexionBBDD("BBDD.db");
-            conexion.cargarMounstros();
-        } catch (SQLException ex) {
-            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        boss = ArrayListed.monstruos.get(0);
-        boss.numRandom(label);
     }
 
     @SuppressWarnings("unchecked")
