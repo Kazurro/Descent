@@ -17,7 +17,7 @@ public class Casilla {
         this.tipo = tipo;
     }
     
-    // Get's y Set's
+    // Get's y Set'ss
     
     public Personaje getHabitante(){
         
