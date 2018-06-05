@@ -72,7 +72,7 @@ public class JMap extends JPanel {
             }
             // Color a la rejilla del cuadrado (AZUL)
             if (casilla.isOcupable() == true) {
-                g2.setColor(Color.red);
+               // g2.setColor(Color.red);
                 // Array que almacena casillas ocupadas
                 caOcupadas.add(casilla);
                 // Asignación de un numero a una casilla
@@ -89,9 +89,9 @@ public class JMap extends JPanel {
             nX += 1;
 
             // Dibuja el cuadrado
-            if (casilla.isOcupable() == true) {
-                g2.drawRect(mapa.getIniX(), mapa.getIniY(), tamaño, tamaño);
-            }
+//            if (casilla.isOcupable() == true) {
+//                g2.drawRect(mapa.getIniX(), mapa.getIniY(), tamaño, tamaño);
+//            }
 
             mapa.setIniX(mapa.getIniX() + tamaño);
         }

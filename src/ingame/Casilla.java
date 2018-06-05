@@ -10,17 +10,16 @@ public class Casilla {
     private final int tamaño = 32;
     private int x, y;
     private int nX, nY;
-    
+
     private int numcasilla;
-    
+
     public Casilla(String tipo) {
         this.tipo = tipo;
     }
-    
+
     // Get's y Set'ss
-    
-    public Personaje getHabitante(){
-        
+    public Personaje getHabitante() {
+
         return habitante;
     }
 
@@ -47,7 +46,7 @@ public class Casilla {
     public int getX() {
         return x;
     }
-    
+
     public int getY() {
         return y;
     }
@@ -56,13 +55,13 @@ public class Casilla {
         this.nX = x;
         this.nY = y;
     }
-    
-    public void setCoordenadas(int x, int y){
-        
+
+    public void setCoordenadas(int x, int y) {
+
         this.x = x;
         this.y = y;
     }
-    
+
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
@@ -70,27 +69,27 @@ public class Casilla {
     public boolean isOcupable() {
         return ocupable;
     }
-    
+
     public int[] getTipo() {
         int[] posicion = new int[2];
-        
-        if (tipo.contains("A")){ // Agua
-            
+
+        if (tipo.contains("A0")) { // Agua
+
             ocupable = false;
-            
+
             posicion[0] = 265;
             posicion[1] = 32;
             return posicion;
-            
-        } else if (tipo.contains("T")){ // Tierra (Centro, UpIzq, UpDer, DowIzq, DowDer)
-            
+
+        } else if (tipo.contains("T")) { // Tierra (Centro, UpIzq, UpDer, DowIzq, DowDer)
+
             ocupable = true;
-            
-            switch(tipo){
+
+            switch (tipo) {
                 case "T0":
                     posicion[0] = 32;
                     posicion[1] = 32;
-                    return posicion;                
+                    return posicion;
                 case "T1":
                     posicion[0] = 0;
                     posicion[1] = 0;
@@ -107,13 +106,29 @@ public class Casilla {
                     posicion[0] = 64;
                     posicion[1] = 64;
                     return posicion;
+                case "T5":// uPCENTRO
+                    posicion[0] = 32;
+                    posicion[1] = 0;
+                    return posicion;
+                case "T6"://downCentro
+                    posicion[0] = 32;
+                    posicion[1] = 64;
+                    return posicion;
+                case "T7"://IzqCentro
+                    posicion[0] = 0;
+                    posicion[1] = 32;
+                    return posicion;
+                case "T8"://derCentro
+                    posicion[0] = 64;
+                    posicion[1] = 32;
+                    return posicion;
             }
-            
-        } else if (tipo.contains("B")){ // Borde (Centro, ..., ...)
-            
+
+        } else if (tipo.contains("B")) { // Borde (Centro, ..., ...)
+
             ocupable = false;
-            
-            switch(tipo){
+
+            switch (tipo) {
                 case "B0":
                     posicion[0] = 32;
                     posicion[1] = 320;
@@ -127,12 +142,12 @@ public class Casilla {
                     posicion[1] = 320;
                     return posicion;
             }
-            
-        } else if (tipo.contains("E")){ // Espejo Agua
-            
+
+        } else if (tipo.contains("E")) { // Espejo Agua
+
             ocupable = false;
-            
-            switch(tipo){
+
+            switch (tipo) {
                 case "E0":
                     posicion[0] = 32;
                     posicion[1] = 352;
@@ -146,12 +161,12 @@ public class Casilla {
                     posicion[1] = 352;
                     return posicion;
             }
-            
-        } else if (tipo.contains("F")){ // Fondo Agua
-            
+
+        } else if (tipo.contains("F")) { // Fondo Agua
+
             ocupable = false;
-            
-            switch(tipo){
+
+            switch (tipo) {
                 case "F0":
                     posicion[0] = 32;
                     posicion[1] = 384;
@@ -165,12 +180,12 @@ public class Casilla {
                     posicion[1] = 384;
                     return posicion;
             }
-            
-        } else if (tipo.contains("C")){ // Caverna Agua
-            
+
+        } else if (tipo.contains("C")) { // Caverna Agua
+
             ocupable = false;
-            
-            switch(tipo){
+
+            switch (tipo) {
                 case "C0":
                     posicion[0] = 352;
                     posicion[1] = 64;
@@ -197,7 +212,7 @@ public class Casilla {
                     return posicion;
             }
         }
-        
+
         return null;
     }
 }
