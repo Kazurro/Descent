@@ -12,9 +12,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import main.Globals;
 import util.Animation;
+import mensajes.Mensaje;
 
 public class Heroe extends Personaje {
-
+    
+    Mensaje msj = new Mensaje();
     private Arma arma;
     private Armadura armadura;
 
@@ -199,8 +201,7 @@ public class Heroe extends Personaje {
                 @Override public void isConnected(boolean connected) {
 
                     if (!connected) {
-
-                        JOptionPane.showMessageDialog(null, "El mando se ha desconectado.");
+                        msj.msgGamePad();                       
                         //xc.release(); // Libera xc
                     }
                 }
