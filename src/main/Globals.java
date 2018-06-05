@@ -19,8 +19,7 @@ public class Globals {
     public static JFrame Main;
     private static JLabel Background;
     private static Principal Principal;
-    private static newGame Game;
-    
+    private static newGame Seleccion;
     public static Game Partida;
 
     public static void setBackground(Dimension size, String rutaImagen) {
@@ -48,11 +47,11 @@ public class Globals {
         Principal = principal;
     }
     
-    public static newGame getGame() {
-        return Game;
+    public static newGame getSeleccion() {
+        return Seleccion;
     }
-    public static void setGame(newGame newGame){
+    public static void setSeleccion(newGame newGame){
         
-        Game = newGame;
+        Seleccion = newGame;
     }
 }

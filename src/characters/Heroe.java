@@ -9,9 +9,7 @@ import items.Armadura;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import main.Globals;
-import util.Animation;
 import mensajes.Mensaje;
 
 public class Heroe extends Personaje {

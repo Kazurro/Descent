@@ -200,11 +200,4 @@ public class Casilla {
         
         return null;
     }
-
-    // To String
-
-    @Override public String toString() {
-        
-        return "Casilla{" + "ocupable=" + ocupable + ", tipo=" + tipo + ", tama\u00f1o=" + tamaño + ", x=" + x + ", y=" + y + ", nX=" + nX + ", nY=" + nY + '}';
-    }
 }

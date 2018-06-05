@@ -27,7 +27,7 @@ public class newGame extends javax.swing.JPanel {
     
     public newGame() {
         initComponents();
-        Globals.setGame(this);
+        Globals.setSeleccion(this);
         this.setBounds(Globals.location);
 
         // Limpia los ArrayList

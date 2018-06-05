@@ -1,6 +1,5 @@
 package ingame;
 
-import characters.Monstruo;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -11,31 +10,23 @@ import java.util.Iterator;
 import java.util.Scanner;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import util.ConexionBBDD;
 
 public class JMap extends JPanel {
-
-    public JMap(JLabel label) {
-        initComponents();
-        this.label=label;
-    }
     
-    private JLabel label;
-    private ConexionBBDD conexion;
     public static Mapa mapa = null;
-    private static Monstruo boss;
+    
     // Array que almacena casillas ocupadas    
     public static ArrayList<Casilla> caOcupadas = new ArrayList();
 
-    @Override
-    public void paintComponent(Graphics g) {
+    @Override public void paintComponent(Graphics g) {
 
         Graphics2D g2 = (Graphics2D) g;
 
         // Tamaño de los cuadrados (Width y Height)
         mapa = new Mapa(1600, 704);
+        
+        // Le da valores predeterminados al Mapa
         int tamaño = 32;
-
         int nX = 1;
         int nY = 1;
 
@@ -50,25 +41,22 @@ public class JMap extends JPanel {
             while (scM.hasNext()) {
                 cadena = scM.nextLine().split("\\|");
 
-                for (String terreno : cadena) {
+                for (String terreno: cadena) {
 
                     mapa.getCasillas().add(new Casilla(terreno));
                 }
             }
 
             scM.close();
-        } catch (FileNotFoundException ex) {
-        }
+        } catch (FileNotFoundException ex) {}
 
         // Pinta la imagen de la respectiva casilla en el Panel 'JMap'
         BufferedImage imgTerreno = null;
 
         try {
             imgTerreno = ImageIO.read(new File("resources/2.png"));
-        } catch (IOException ex) {
-        }
+        } catch (IOException ex) {}
 
-        //Iterator<Casilla> it = lista.iterator();
         Iterator<Casilla> it = mapa.getCasillas().iterator();
 
         numCasilla = 0;
@@ -106,8 +94,6 @@ public class JMap extends JPanel {
             }
 
             mapa.setIniX(mapa.getIniX() + tamaño);
-            System.out.println(casilla.toString());
-
         }
     }
 

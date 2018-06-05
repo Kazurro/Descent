@@ -21,11 +21,8 @@ public class Game extends javax.swing.JFrame {
     
     public Game(Heroe heroe1, Heroe heroe2, Heroe heroe3, Heroe heroe4) {
         initComponents();
-        jMap = new JMap(lbBoss);
+        jMap = new JMap();
        
-         
-           
-        
         // Carga el Frame a FullScreen
         this.setSize(Globals.fullScreen);
         Globals.Partida = this;
@@ -46,8 +43,6 @@ public class Game extends javax.swing.JFrame {
         // Asigna el primer turno al Heroe 1
         heroe1.getKeyboard().setLabel(lbHeroe1);
         heroe1.getGamePad().setGamePad(lbHeroe1);
-        
-       
     }
 
     @SuppressWarnings("unchecked")
