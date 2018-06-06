@@ -14,28 +14,26 @@ import mensajes.Mensaje;
 
 public class Heroe extends Personaje {
     
-    Mensaje msj = new Mensaje();
     private Arma arma;
     private Armadura armadura;
 
     // Coordenadas
-    private final Keyboard keyboard;
-    private final Gamepad gamepad;
     private int nX, nY;
     private int y = 0, x = 0;
-
     private int contador = 0;
 
     // Gestiona el Keyboard asociado al heroe
+    private final Keyboard keyboard;
+    private final Gamepad gamepad;
+    
     public Keyboard getKeyboard() {
         return this.keyboard;
     }
-
     public Gamepad getGamePad() {
         return this.gamepad;
     }
 
-    // Constructor del Heroe (Hereda de Generic)
+    // Constructor del Heroe (Hereda de Generic) y Inicializa sus clases internas
     public Heroe(String nombre, Sprite sprite, int vida, int daño, int defensa, int movimiento, int rango) {
         super(nombre, sprite, vida, daño, defensa, movimiento, rango);
 
@@ -50,19 +48,16 @@ public class Heroe extends Personaje {
         super.setMovimiento(-arma.getPeso());
         super.setRango(arma.getRango());
     }
-
     public void equiparArmadura() {
         super.setVida(armadura.getVida());
         super.setMovimiento(-armadura.getPeso());
         super.setDefensa(armadura.getDefensa());
     }
-
     public void desequiparArma() {
         super.setDaño(-arma.getDaño());
         super.setMovimiento(+arma.getPeso());
         super.setRango(-arma.getRango());
     }
-
     public void desequiparArmadura() {
         super.setVida(-armadura.getVida());
         super.setMovimiento(+armadura.getPeso());
@@ -78,12 +73,13 @@ public class Heroe extends Personaje {
                 if (Heroe.this.getMovimiento() > contador) {
 
                     if (casilla.isOcupable() == true) {
-                        casilla.setHabitante(Heroe.this);
+
+                        //Recibe el número de casilla y coordenadas de la nueva Casilla
                         this.nX = nX;
                         this.nY = nY;
                         x = casilla.getX();
                         y = casilla.getY();
-
+                        casilla.setHabitante(Heroe.this);
                         contador += 1;
                         break;
                     }
@@ -199,7 +195,7 @@ public class Heroe extends Personaje {
                 @Override public void isConnected(boolean connected) {
 
                     if (!connected) {
-                        msj.msgGamePad();                       
+                        //Mensaje.msgGamePad();                       
                         //xc.release(); // Libera xc
                     }
                 }

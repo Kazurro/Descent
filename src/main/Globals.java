@@ -1,6 +1,7 @@
 package main;
 
 import ingame.Game;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -22,30 +23,49 @@ public class Globals {
     private static newGame Seleccion;
     public static Game Partida;
 
+    public static void setMain(JFrame mainInstance) {
+        
+        Main = mainInstance;
+        Main.setSize(fullScreen);
+        Main.setIconImage(new ImageIcon("resources/icon.png").getImage());
+    }
+    
     public static void setBackground(Dimension size, String rutaImagen) {
         
         Background.setSize(fullScreen);
         Background.setIcon(new ImageIcon(new ImageIcon(rutaImagen).getImage().getScaledInstance((int) size.getWidth(), (int) size.getHeight(), java.awt.Image.SCALE_SMOOTH)));
     }
 
+    // Gestiona el JLabel 'Background'
+    
     public static JLabel getBackground() {
         
         return Background;
     }
     
-    public static JLabel addBackground(JLabel background) {
+    public static void setBackground(JLabel backgroundInstance, String rutaImagen) {
 
-        return Background = background;
+        Background = null;
+        Background = backgroundInstance;
+        Main.add(Background);
+        Background.setIcon(new ImageIcon(new ImageIcon(rutaImagen).getImage().getScaledInstance((int) fullScreen.getWidth(), (int) fullScreen.getHeight(), java.awt.Image.SCALE_SMOOTH)));
+        Background.setSize(fullScreen);
     }
 
+    // Gestiona el Panel 'Principal'
+    
     public static JPanel getPrincipal() {
         
         return Principal;
     } 
-    public static void setPrincipal(Principal principal){
+    public static void setPrincipal(Principal principalInstance){
         
-        Principal = principal;
+        Principal = principalInstance;
+        Principal.setBounds(location);
+        Principal.setBackground(new Color(0, 0, 0, 0));
     }
+    
+    // Gestiona el Panel 'NewGame'
     
     public static newGame getSeleccion() {
         return Seleccion;
@@ -53,5 +73,7 @@ public class Globals {
     public static void setSeleccion(newGame newGame){
         
         Seleccion = newGame;
+        Seleccion.setBounds(location);
+        Seleccion.setBackground(new Color(0, 0, 0, 0));
     }
 }

@@ -27,9 +27,12 @@ public class newGame extends javax.swing.JPanel {
     
     public newGame() {
         initComponents();
-        Globals.setSeleccion(this);
-        this.setBounds(Globals.location);
-
+        Globals.setSeleccion(newGame.this);
+        
+        // Carga el fondo de selección de Heroe
+        Globals.getBackground().setVisible(false);
+        Globals.setBackground(new JLabel(), "resources/background2.jpg");
+        Globals.getBackground().setVisible(true);
         // Limpia los ArrayList
         relHeroes.clear();
         selHeroes.clear();
@@ -49,11 +52,7 @@ public class newGame extends javax.swing.JPanel {
         } catch (SQLException ex) {
         }
 
-        // Carga el fondo de selección de Heroe
-        Globals.getBackground().setVisible(false);
-        this.add(Globals.addBackground(new JLabel()));
-        Globals.setBackground(Globals.fullScreen, "resources/background2.jpg");
-        Globals.getBackground().setVisible(true);
+
 
         // Botón Volver
         lbReturn.addMouseListener(new MouseAdapter() {
@@ -62,8 +61,7 @@ public class newGame extends javax.swing.JPanel {
 
                 newGame.this.setVisible(false);
                 Globals.getPrincipal().setVisible(true);
-                Globals.Main.add(Globals.addBackground(new JLabel()));
-                Globals.setBackground(Globals.fullScreen, "resources/background1.jpg");
+                Globals.setBackground(new JLabel(), "resources/background1.jpg");
                 Globals.Main.repaint();
             }
         });

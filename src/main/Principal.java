@@ -9,9 +9,8 @@ public class Principal extends javax.swing.JPanel {
     public Principal() {
         initComponents();
         
-        Globals.setPrincipal(this);
-        this.setBounds(Globals.location);
-        this.setBackground(new Color(0, 0, 0, 0));
+        // Se auto añade a Globals (FullScreen y Background transparente)
+        Globals.setPrincipal(Principal.this);
         
         // Abre la ventana de selección de personaje
 
@@ -20,7 +19,6 @@ public class Principal extends javax.swing.JPanel {
                
                 Globals.getPrincipal().setVisible(false);
                 Globals.Main.add(new newGame());
-                Globals.Main.repaint();
             }
         });
         

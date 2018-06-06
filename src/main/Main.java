@@ -1,28 +1,20 @@
 package main;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class MainScreen extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame {
     
-    public MainScreen() {
+    public Main() {
         initComponents();
 
-        this.setIconImage(new ImageIcon("resources/icon.png").getImage());
-        
-        // Ajusta la ventana a Full Screen
-        Globals.Main = MainScreen.this;
-        this.setSize(Globals.fullScreen);
+        // Se auto añade a Globals (FullScreen y Icon App)
+        Globals.setMain(Main.this);
         
         // Añade el panel Principal
-
         this.add(new Principal());
         
         // Añade al Background el fondo 1 a Full Screen
-        
-        this.add(Globals.addBackground(new JLabel()));
-        Globals.setBackground(Globals.fullScreen, "resources/background1.jpg");
-        
+        Globals.setBackground(new JLabel(), "resources/background1.jpg");
     }
 
     @SuppressWarnings("unchecked")
@@ -41,7 +33,7 @@ public class MainScreen extends javax.swing.JFrame {
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(() -> {
-            new MainScreen().setVisible(true);
+            new Main().setVisible(true);
         });
     }
 
