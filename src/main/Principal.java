@@ -1,6 +1,5 @@
 package main;
 
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -13,7 +12,6 @@ public class Principal extends javax.swing.JPanel {
         Globals.setPrincipal(Principal.this);
         
         // Abre la ventana de selección de personaje
-
         lbNewGame.addMouseListener(new MouseAdapter() {
             @Override public void mouseClicked(MouseEvent e) { 
                
@@ -23,7 +21,6 @@ public class Principal extends javax.swing.JPanel {
         });
         
         // Cierra la aplicación completamente
-        
         lbExit.addMouseListener(new MouseAdapter() {
             @Override public void mouseClicked(MouseEvent e) {
                 

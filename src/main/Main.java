@@ -1,7 +1,5 @@
 package main;
 
-import javax.swing.JLabel;
-
 public class Main extends javax.swing.JFrame {
     
     public Main() {
@@ -14,7 +12,7 @@ public class Main extends javax.swing.JFrame {
         this.add(new Principal());
         
         // Añade al Background el fondo 1 a Full Screen
-        Globals.setBackground(new JLabel(), "resources/background1.jpg");
+        Globals.setBackground(Globals.getPrincipal(), "resources/background1.jpg");
     }
 
     @SuppressWarnings("unchecked")

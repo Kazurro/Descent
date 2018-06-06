@@ -18,7 +18,7 @@ public class Globals {
     
     // Ventanas de diseño del MainScreen
     public static JFrame Main;
-    private static JLabel Background;
+    private static JLabel Background = new JLabel();
     private static Principal Principal;
     private static newGame Seleccion;
     public static Game Partida;
@@ -43,11 +43,9 @@ public class Globals {
         return Background;
     }
     
-    public static void setBackground(JLabel backgroundInstance, String rutaImagen) {
+    public static void setBackground(JPanel panel, String rutaImagen) {
 
-        Background = null;
-        Background = backgroundInstance;
-        Main.add(Background);
+        panel.add(Background);
         Background.setIcon(new ImageIcon(new ImageIcon(rutaImagen).getImage().getScaledInstance((int) fullScreen.getWidth(), (int) fullScreen.getHeight(), java.awt.Image.SCALE_SMOOTH)));
         Background.setSize(fullScreen);
     }
@@ -58,7 +56,7 @@ public class Globals {
         
         return Principal;
     } 
-    public static void setPrincipal(Principal principalInstance){
+    public static void setPrincipal(Principal principalInstance) {
         
         Principal = principalInstance;
         Principal.setBounds(location);

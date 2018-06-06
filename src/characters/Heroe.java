@@ -39,7 +39,7 @@ public class Heroe extends Personaje {
 
         keyboard = this.new Keyboard();
         gamepad = this.new Gamepad();
-        ArrayListed.heroes.add(this);
+        ArrayListed.heroes.add(Heroe.this);
     }
 
     // Administra los cambios de Stats del heroe al equipar Items
@@ -202,7 +202,6 @@ public class Heroe extends Personaje {
 
                 // Pad Cuadriculado
                 @Override public void dpad(int direction, boolean pressed) {
-
                     Globals.Partida.repaint();
 
                     switch (direction) {
